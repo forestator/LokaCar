@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
         TextView password = findViewById(R.id.edPassword);
         if (isValidPassword(password.getText().toString())) {
             Intent intent= new Intent(this, HomeActivity.class);
+            Toast.makeText(this, "Bonjour Michel !", Toast.LENGTH_LONG).show();
             startActivity(intent);
         } else {
             Toast.makeText(this, "Erreur de mot de passe, Veuillez reessayer", Toast.LENGTH_LONG).show();
