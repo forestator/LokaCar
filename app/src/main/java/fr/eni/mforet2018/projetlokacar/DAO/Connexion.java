@@ -8,5 +8,4 @@ public class Connexion {
     {
         return Room.databaseBuilder(context,AppDatabase.class,"AgencyDB").allowMainThreadQueries().build();
     }
-
 }

@@ -2,42 +2,72 @@ package fr.eni.mforet2018.projetlokacar.Entities;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 import java.io.File;
-import java.util.Arrays;
 
-@Entity
-public class Car {
+@Entity(indices = {@Index(value = {"plateNumber"}, unique = true)})
+public class Car implements Parcelable {
 
     @PrimaryKey
-    private String numberPlate;
+    @NonNull
+    private String plateNumber;
     private float dailyPrice;
     private boolean isRented;
-    private String[] type;
+    private String type;
     private String brand;
     private String model;
+    private String fuel;
+    private int seatsNumber;
     @Ignore
     private File picture;
-
-    public Car(String numberPlate, float dailyPrice, boolean isRented, String brand, String model) {
-        this.numberPlate = numberPlate;
-        this.dailyPrice = dailyPrice;
-        this.isRented = isRented;
-        this.type = new String[]{"Berline", "Coupé","Familiale","Cabriolet","Roadster","Pickup","Crossover","Sport"};
-        this.brand = brand;
-        this.model = model;
-    }
 
     public Car() {
     }
 
-    public String getNumberPlate() {
-        return numberPlate;
+
+    protected Car(Parcel in) {
+        plateNumber = in.readString();
+        dailyPrice = in.readFloat();
+        isRented = in.readByte() != 0;
+        type = in.readString();
+        brand = in.readString();
+        model = in.readString();
+        fuel = in.readString();
+        seatsNumber = in.readInt();
     }
 
-    public void setNumberPlate(String numberPlate) {
-        this.numberPlate = numberPlate;
+    public static final Creator<Car> CREATOR = new Creator<Car>() {
+        @Override
+        public Car createFromParcel(Parcel in) {
+            return new Car(in);
+        }
+
+        @Override
+        public Car[] newArray(int size) {
+            return new Car[size];
+        }
+    };
+
+    public int getSeatsNumber() {
+        return seatsNumber;
+    }
+
+    public void setSeatsNumber(int seatsNumber) {
+        this.seatsNumber = seatsNumber;
+    }
+
+    @NonNull
+    public String getPlateNumber() {
+        return plateNumber;
+    }
+
+    public void setPlateNumber(@NonNull String plateNumber) {
+        this.plateNumber = plateNumber;
     }
 
     public float getDailyPrice() {
@@ -53,14 +83,14 @@ public class Car {
     }
 
     public void setRented(boolean rented) {
-        this.isRented = rented;
+        isRented = rented;
     }
 
-    public String[] getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(String[] type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -88,15 +118,41 @@ public class Car {
         this.picture = picture;
     }
 
+    public String getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
-                "numberPlate='" + numberPlate + '\'' +
+                "plateNumber='" + plateNumber + '\'' +
                 ", dailyPrice=" + dailyPrice +
                 ", isRented=" + isRented +
-                ", type=" + Arrays.toString(type) +
+                ", type='" + type + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
+                ", picture=" + picture +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(plateNumber);
+        parcel.writeFloat(dailyPrice);
+        parcel.writeByte((byte) (isRented ? 1 : 0));
+        parcel.writeString(type);
+        parcel.writeString(brand);
+        parcel.writeString(model);
+        parcel.writeString(fuel);
+        parcel.writeInt(seatsNumber);
     }
 }

@@ -1,26 +1,47 @@
 package fr.eni.mforet2018.projetlokacar.Entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.File;
 import java.time.LocalDate;
 
-@Entity
+import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
+
+@Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)},
+        foreignKeys = {
+                @ForeignKey(entity = Client.class,
+                        parentColumns = "clientId",
+                        childColumns = "clientId"),
+                @ForeignKey(entity = Car.class,
+                        parentColumns = "plateNumber",
+                        childColumns = "carPlateNumber")
+        })
 public class LocationFile implements Parcelable {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private float totalCost;
     @Ignore
     private File picturesBeforeRent;
     @Ignore
     private File picturesAfterRent;
+
+    // TODO: penser à rajouter cet attribut dans les indexes afin d'avoir des fichiers de loc uniques
+    @TypeConverters({Converters.class})
+    @Ignore
     private LocalDate startOfRentDate;
+    @TypeConverters({Converters.class})
+    @Ignore
     private LocalDate endOfRentDate;
+    private int clientId;
+    private String carPlateNumber;
 
     public LocationFile() {
     }
@@ -37,6 +58,17 @@ public class LocationFile implements Parcelable {
     protected LocationFile(Parcel in) {
         id = in.readInt();
         totalCost = in.readFloat();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeFloat(totalCost);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<LocationFile> CREATOR = new Creator<LocationFile>() {
@@ -99,6 +131,22 @@ public class LocationFile implements Parcelable {
         this.endOfRentDate = endOfRentDate;
     }
 
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public String getCarPlateNumber() {
+        return carPlateNumber;
+    }
+
+    public void setCarPlateNumber(String carPlateNumber) {
+        this.carPlateNumber = carPlateNumber;
+    }
+
     @Override
     public String toString() {
         return "LocationFile{" +
@@ -109,16 +157,5 @@ public class LocationFile implements Parcelable {
                 ", startOfRentDate=" + startOfRentDate +
                 ", endOfRentDate=" + endOfRentDate +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeFloat(totalCost);
     }
 }

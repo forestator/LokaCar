@@ -9,27 +9,38 @@ import android.os.Parcelable;
 @Entity(indices = {@Index(value = {"name", "id"}, unique = true)})
 public class Agency implements Parcelable {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
+    private String password;
     private String managerName;
     private float turnover;
-
-    public Agency(int id, String name, String managerName, float turnover) {
-        this.id = id;
-        this.name = name;
-        this.managerName = managerName;
-        this.turnover = turnover;
-    }
 
     public Agency() {
     }
 
+
+
     protected Agency(Parcel in) {
         id = in.readInt();
         name = in.readString();
+        password = in.readString();
         managerName = in.readString();
         turnover = in.readFloat();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(password);
+        dest.writeString(managerName);
+        dest.writeFloat(turnover);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Agency> CREATOR = new Creator<Agency>() {
@@ -60,6 +71,14 @@ public class Agency implements Parcelable {
         this.name = name;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public String getManagerName() {
         return managerName;
     }
@@ -81,24 +100,9 @@ public class Agency implements Parcelable {
         return "Agency{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", managerName='" + managerName + '\'' +
                 ", turnover=" + turnover +
                 '}';
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
-        parcel.writeString(name);
-        parcel.writeString(managerName);
-        parcel.writeFloat(turnover);
-    }
 }
-
-
-

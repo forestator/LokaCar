@@ -1,35 +1,27 @@
 package fr.eni.mforet2018.projetlokacar.Entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-@Entity
+@Entity(indices = {@Index(value = {"clientId"}, unique = true)})
 public class Client implements Parcelable {
 
-    @PrimaryKey
-    private int id;
+    @PrimaryKey(autoGenerate = true)
+    private int clientId;
     private String lastName;
     private String firtName;
     private String phoneNumber;
     private String email;
     private String mailAdresse;
 
-    public Client(int id, String lastName, String firtName, String phoneNumber, String email, String mailAdresse) {
-        this.id = id;
-        this.lastName = lastName;
-        this.firtName = firtName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.mailAdresse = mailAdresse;
-    }
-
     public Client() {
     }
 
     protected Client(Parcel in) {
-        id = in.readInt();
+        clientId = in.readInt();
         lastName = in.readString();
         firtName = in.readString();
         phoneNumber = in.readString();
@@ -49,12 +41,12 @@ public class Client implements Parcelable {
         }
     };
 
-    public int getId() {
-        return id;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
     public String getLastName() {
@@ -100,7 +92,7 @@ public class Client implements Parcelable {
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + id +
+                "id=" + clientId +
                 ", lastName='" + lastName + '\'' +
                 ", firtName='" + firtName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -116,7 +108,7 @@ public class Client implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(id);
+        parcel.writeInt(clientId);
         parcel.writeString(lastName);
         parcel.writeString(firtName);
         parcel.writeString(phoneNumber);
