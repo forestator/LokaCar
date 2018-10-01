@@ -20,10 +20,6 @@ public class App extends Application {
         return database;
     }
 
-    public boolean isValidPassword(String pass) {
-        return this.password.equals(pass);
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();

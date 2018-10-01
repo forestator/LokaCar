@@ -20,11 +20,15 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginClick(View view) {
         TextView password = findViewById(R.id.edPassword);
-        if (App.get().isValidPassword(password.getText().toString())) {
-            Intent intent= new Intent(LoginActivity.this, HomeActivity.class);
+        if (isValidPassword(password.getText().toString())) {
+            Intent intent= new Intent(this, HomeActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Erreur de mot de passe, Veuillez reessayer", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean isValidPassword(String pass) {
+        return "ananas".equals(pass);
     }
 }
