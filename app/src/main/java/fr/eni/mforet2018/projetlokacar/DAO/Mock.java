@@ -82,6 +82,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         pijot.setBrand("Peugeot");
         pijot.setModel("106");
         pijot.setDailyPrice(25);
+        pijot.setType("citadine");
         db.carDAO().insert(pijot);
 
         Car golf = new Car();
@@ -91,13 +92,17 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         golf.setBrand("Volkswagen");
         golf.setModel("Golf");
         golf.setDailyPrice(50);
+        golf.setType("urbaine");
         db.carDAO().insert(golf);
 
         golf.setPlateNumber("FV-556-GT");
         golf.setFuel("essence");
+        golf.setType("4x4");
         db.carDAO().insert(golf);
 
         golf.setPlateNumber("GF-478-GK");
+        golf.setFuel("électrique");
+        golf.setType("sportive");
         db.carDAO().insert(golf);
 
         // Create loc

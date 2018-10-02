@@ -41,6 +41,10 @@ public class CarAdapter  extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
         } else {
             holder.iCar.setImageResource(R.drawable.lokacar_ic_car_yellow_90);
         }
+        holder.tvFuel.setText(car.getFuel());
+        holder.tvCarType.setText(car.getType());
+        String seatsNb = car.getSeatsNumber() + " places";
+        holder.tvSeats.setText(seatsNb);
     }
 
     @Override
@@ -52,6 +56,9 @@ public class CarAdapter  extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
         private TextView tvPlateNumber;
         private TextView tvModele;
         private TextView tvBrandName;
+        private TextView tvFuel;
+        private TextView tvCarType;
+        private TextView tvSeats;
         private ImageView iCar;
 
         public ViewHolder(View itemView) {
@@ -60,6 +67,9 @@ public class CarAdapter  extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
             this.tvModele = itemView.findViewById(R.id.tvCarModel);
             this.tvBrandName = itemView.findViewById(R.id.tvCarBrand);
             this.iCar = itemView.findViewById(R.id.ImgCar);
+            this.tvFuel = itemView.findViewById(R.id.tvFuel);
+            this.tvCarType = itemView.findViewById(R.id.tvCarType);
+            this.tvSeats = itemView.findViewById(R.id.tvSeats);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

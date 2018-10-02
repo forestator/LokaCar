@@ -19,17 +19,17 @@
             android:id="@+id/rlLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:padding="5dp"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:layout_marginStart="25dp"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/tvCarBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Marque de voiture"
                 android:textStyle="bold"
-                android:layout_centerHorizontal="true"
-                android:text="Marque de voiture" />
+                android:layout_centerHorizontal="true"/>
 
 
             <TextView
@@ -37,18 +37,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tvCarBrand"
-                android:layout_centerHorizontal="true"
-                android:text="Modèle de voiture" />
+                android:text="Modèle de voiture"
+                android:layout_centerHorizontal="true"/>
 
+            <TextView
+                android:id="@+id/tvCarType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCarModel"
+                android:text="Type" />
+
+            <TextView
+                android:id="@+id/separator_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvCarType"
+                android:layout_toEndOf="@+id/tvCarType"
+                android:text=" -- " />
+
+            <TextView
+                android:id="@+id/tvFuel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/separator_1"
+                android:layout_toEndOf="@+id/separator_1"
+                android:text="Carburant"/>
+
+            <TextView
+                android:id="@+id/separator_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvFuel"
+                android:layout_toEndOf="@+id/tvFuel"
+                android:text=" -- " />
+
+            <TextView
+                android:id="@+id/tvSeats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/separator_2"
+                android:layout_toEndOf="@+id/separator_2"
+                android:text="2 places"/>
 
             <TextView
                 android:id="@+id/tvPlateNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvCarModel"
-                android:typeface="serif"
+                android:layout_below="@+id/tvCarType"
                 android:layout_centerHorizontal="true"
-                android:text="AA-111-AA" />
+                android:text="AA-111-AA"
+                android:typeface="serif" />
 
         </RelativeLayout>
 
@@ -57,8 +95,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="50dp"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
             android:src="@drawable/lokacar_ic_car_90" />
 
     </RelativeLayout>

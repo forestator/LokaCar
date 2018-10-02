@@ -15,4 +15,5 @@
     <string name="number_of_seats">Nombre de places :</string>
     <string name="n_d_immatriculation">N° d\'immatriculation :</string>
     <string name="prix_par_jour">Prix par jour</string>
+    <string name="separator">--</string>
 </resources>

@@ -38,6 +38,5 @@
             android:layout_below="@+id/tvMailAddress"
             android:text="01.23.45.67.89" />
 
-
     </RelativeLayout>
 </android.support.v7.widget.CardView>
