@@ -11,6 +11,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        //TODO: Demande d'autorisations pour accès camera ...
+        //TODO: Demande d'autorisations pour accès camera ......
     }
 }
