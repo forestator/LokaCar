@@ -1,24 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="20dp"
-    android:padding="5dp"
     android:layout_margin="5dp"
-    >
+    android:orientation="vertical"
+    android:padding="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="8dp">
 
-    <TextView
-        android:id="@+id/tvPlateNumber"
+    <RelativeLayout
+        android:id="@+id/rlGlobal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-        android:typeface="serif"
-        android:textColor="@android:color/holo_blue_dark"
-        android:layout_marginLeft="10dp"
-        android:textSize="25dp" />
+        android:layout_height="match_parent">
 
+
+        <RelativeLayout
+            android:id="@+id/rlLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:padding="5dp"
+            android:layout_centerVertical="true">
+
+            <TextView
+                android:id="@+id/tvCarBrand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:text="Marque de voiture" />
+
+
+            <TextView
+                android:id="@+id/tvCarModel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCarBrand"
+                android:layout_centerHorizontal="true"
+                android:text="Modèle de voiture" />
+
+
+            <TextView
+                android:id="@+id/tvPlateNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCarModel"
+                android:typeface="serif"
+                android:layout_centerHorizontal="true"
+                android:text="AA-111-AA" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/lokacar_ic_car_90" />
+
+    </RelativeLayout>
 </android.support.v7.widget.CardView>
