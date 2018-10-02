@@ -2,6 +2,8 @@ package fr.eni.mforet2018.projetlokacar;
 
 import android.app.Application;
 import android.arch.persistence.room.Room;
+import android.util.Log;
+
 import fr.eni.mforet2018.projetlokacar.DAO.AppDatabase;
 import fr.eni.mforet2018.projetlokacar.DAO.Mock;
 
@@ -23,6 +25,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.i("MAX","BONSOIR");
         database = Room
                 .databaseBuilder(getApplicationContext(), AppDatabase.class, "AgencyDB")
                 .fallbackToDestructiveMigration()

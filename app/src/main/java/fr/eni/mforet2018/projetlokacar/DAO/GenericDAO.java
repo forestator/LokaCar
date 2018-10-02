@@ -21,8 +21,4 @@ public interface GenericDAO<T> {
 
     @Update
     void update(T entity);
-
-
-
-
 }
