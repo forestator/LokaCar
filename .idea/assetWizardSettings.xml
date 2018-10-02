@@ -28,8 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="color" value="3ca4e0" />
                             <entry key="height" value="90" />
-                            <entry key="outputName" value="lokacar_ic_car_90" />
+                            <entry key="outputName" value="lokacar_ic_car_blue_90" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\cklavins2018" />
                             <entry key="width" value="90" />

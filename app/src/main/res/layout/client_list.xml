@@ -14,35 +14,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:layout_marginStart="25dp">
 
         <TextView
-            android:id="@+id/tvClientLastName"
+            android:id="@+id/tvClientFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="Last Name"
+            android:text="Rupert Michel"
             android:textStyle="bold" />
 
-
         <TextView
-            android:id="@+id/tvClientFirstName"
+            android:id="@+id/tvMailAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/tvClientLastName"
-            android:layout_alignBaseline="@+id/tvClientLastName"
-            android:layout_centerHorizontal="true"
-            android:text="First Name" />
-
+            android:layout_below="@+id/tvClientFullName"
+            android:text="22, Rue de la Rue, 42000 Pas Ici" />
 
         <TextView
-            android:id="@+id/tvMailAdresse"
+            android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvCarModel"
-            android:layout_centerHorizontal="true"
-            android:text="AA-111-AA"
-            android:typeface="serif" />
+            android:layout_below="@+id/tvMailAddress"
+            android:text="01.23.45.67.89" />
 
 
     </RelativeLayout>
