@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_directions_car_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,12 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3ca4e0" />
-                            <entry key="height" value="90" />
-                            <entry key="outputName" value="lokacar_ic_car_blue_90" />
+                            <entry key="outputName" value="lokacar_ic_add_24" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\cklavins2018" />
-                            <entry key="width" value="90" />
                           </map>
                         </option>
                       </PersistentState>

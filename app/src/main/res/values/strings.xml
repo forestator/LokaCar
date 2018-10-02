@@ -22,7 +22,11 @@
     <string name="firstName">Prénom :</string>
     <string name="address">Adresse :</string>
     <string name="email">Email :</string>
-    <string name="phoneNumber">Téléphone</string>
+    <string name="phoneNumber">Téléphone :</string>
+    <string name="add_client">Ajouter un Client</string>
+    <string name="cancel">Annuler</string>
+    <string name="createClient">Ajouter Client</string>
+    <string name="new_client">Nouveau Client :</string>
     <string name="nom_du_client">Nom du client pour la location :</string>
     <string name="recherche">recherche</string>
     <string name="louer_marque_marque">Louer : marque -- marque</string>

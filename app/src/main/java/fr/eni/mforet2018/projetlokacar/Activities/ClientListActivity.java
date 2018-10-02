@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
@@ -50,6 +51,12 @@ public class ClientListActivity extends AppCompatActivity implements ClickClient
         recyclerView.setHasFixedSize(true);
         ClientAdapter cAdapter = new ClientAdapter(clients, this);
         recyclerView.setAdapter(cAdapter);
+    }
+
+    public void redirNewClient(View view) {
+        Toast.makeText(this, "Nouveau Client", Toast.LENGTH_SHORT).show();
+        Intent newClientIntent = new Intent(this, ClientAddActivity.class);
+        startActivity(newClientIntent);
     }
 
     private class AsyncGetClients extends AsyncTask<Void, Void, Void> {

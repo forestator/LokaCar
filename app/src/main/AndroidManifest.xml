@@ -75,6 +75,7 @@
         <activity
             android:name=".Activities.RentActivity"
             android:parentActivityName=".Activities.CarDetailsActivity">
+
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -94,6 +95,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.ClientListActivity" />
         </activity>
+        <activity android:name=".Activities.ClientAddActivity"
+            android:parentActivityName=".Activities.ClientListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ClientListActivity" /></activity>
     </application>
 
 </manifest>
