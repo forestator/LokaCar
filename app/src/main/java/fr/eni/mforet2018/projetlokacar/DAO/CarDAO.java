@@ -12,6 +12,7 @@ import fr.eni.mforet2018.projetlokacar.Entities.Car;
 public interface CarDAO extends GenericDAO<Car> {
 
     String SELECT_ALL_NOT_RENTED = "SELECT * FROM car WHERE isRented = 0";
+    String SELECT_ALL_RENTED = "SELECT * FROM car WHERE isRented = 1";
 
     @Query("DELETE FROM Car")
     void deleteAll();
@@ -19,4 +20,6 @@ public interface CarDAO extends GenericDAO<Car> {
     @Query(SELECT_ALL_NOT_RENTED)
     List<Car> getAllNotRentedCars();
 
+    @Query(SELECT_ALL_RENTED)
+    List<Car> getAllRentedCars();
 }
