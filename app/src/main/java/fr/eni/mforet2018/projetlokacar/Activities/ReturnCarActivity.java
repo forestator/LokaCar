@@ -1,5 +1,6 @@
 package fr.eni.mforet2018.projetlokacar.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +37,9 @@ public class ReturnCarActivity extends AppCompatActivity implements ClickCarList
 
     @Override
     public void onClickCar(Car car) {
-        Toast.makeText(this, car.getPlateNumber(), Toast.LENGTH_SHORT).show();
+        Intent detailsIntent = new Intent(this, CarDetailsActivity.class);
+        detailsIntent.putExtra("car",car);
+        startActivity(detailsIntent);
     }
 
     private class AsyncGetRentedCars extends AsyncTask<Void, Void, Void> {

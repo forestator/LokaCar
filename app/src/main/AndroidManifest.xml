@@ -62,7 +62,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-        <activity android:name=".Activities.ParkingActivity"></activity>
+        <activity
+            android:name=".Activities.ParkingActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
+        <activity android:name=".Activities.CarDetailsActivity"></activity>
     </application>
 
 </manifest>
