@@ -1,24 +1,36 @@
 package fr.eni.mforet2018.projetlokacar.DAO;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import java.time.LocalDate;
-import java.util.Date;
 
-import fr.eni.mforet2018.projetlokacar.App;
+import fr.eni.mforet2018.projetlokacar.Activities.OnFinishedDBListener;
 import fr.eni.mforet2018.projetlokacar.Entities.Agency;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
 import fr.eni.mforet2018.projetlokacar.Entities.Client;
 import fr.eni.mforet2018.projetlokacar.Entities.LocationFile;
 
-public class Mock extends AsyncTask<Void, Void, String> {
+public class Mock extends AsyncTask<Void, Void, Void> {
+
+    private Context myContext;
+    private OnFinishedDBListener listener;
+
+    public Mock(Context myContext, OnFinishedDBListener listener) {
+        this.myContext = myContext;
+        this.listener = listener;
+    }
 
     @Override
-    protected String doInBackground(Void... voids) {
-        AppDatabase db = App.get().getDB();
+    protected Void doInBackground(Void... voids) {
+        AppDatabase db = Room
+                .databaseBuilder(myContext, AppDatabase.class, "AgencyDB")
+                .fallbackToDestructiveMigration()
+                .build();
 
-        Log.e("TEST", "Start seed");
+        Log.e("INITDB", "Start Mock");
 
         db.agencyDAO().deleteAll();
         db.carDAO().deleteAll();
@@ -97,8 +109,13 @@ public class Mock extends AsyncTask<Void, Void, String> {
 
         loc.setId((int) db.locationFileDAO().insert(loc));
 
-        Log.e("TEST", "end of seed");
-
+        Log.e("INITDB", "end of mock");
         return null;
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        super.onPostExecute(aVoid);
+        listener.goToHomeActivity();
     }
 }

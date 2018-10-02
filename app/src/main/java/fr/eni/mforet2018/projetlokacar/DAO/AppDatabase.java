@@ -10,7 +10,7 @@ import fr.eni.mforet2018.projetlokacar.Entities.Client;
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 import fr.eni.mforet2018.projetlokacar.Entities.LocationFile;
 
-@Database(entities = {Agency.class,Car.class,Client.class,LocationFile.class,},version = 1, exportSchema = false)
+@Database(entities = {Agency.class,Car.class,Client.class,LocationFile.class,},version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract AgencyDAO agencyDAO();

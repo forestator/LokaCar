@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 
-@Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)},
+@Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
         foreignKeys = {
                 @ForeignKey(entity = Client.class,
                         parentColumns = "clientId",
@@ -22,7 +22,7 @@ import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
                 @ForeignKey(entity = Car.class,
                         parentColumns = "plateNumber",
                         childColumns = "carPlateNumber")
-        })
+        }*/)
 public class LocationFile implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)

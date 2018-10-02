@@ -29,7 +29,7 @@ public class App extends Application {
                 .databaseBuilder(getApplicationContext(), AppDatabase.class, "AgencyDB")
                 .fallbackToDestructiveMigration()
                 .build();
-        new Mock().execute();
+     //   new Mock(this,this).execute();
         instance = this;
     }
 }
