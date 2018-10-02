@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="20dp"
+    android:padding="5dp"
+    android:layout_margin="5dp"
+    >
+
+    <TextView
+        android:id="@+id/tvPlateNumber"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:typeface="serif"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginLeft="10dp"
+        android:textSize="25dp" />
+
+</android.support.v7.widget.CardView>
