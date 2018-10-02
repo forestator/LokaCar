@@ -16,8 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.ReturnCarActivity" />
         <activity android:name=".Activities.RentCarActivity" />
-        <activity android:name=".Activities.HomeActivity"></activity>
+        <activity android:name=".Activities.HomeActivity" />
+        <activity android:name=".Activities.ClientManagementActivity" />
+        <activity android:name=".Activities.AgencyManagementActivity" />
+        <activity android:name=".Activities.SearchActivity"></activity>
     </application>
 
 </manifest>

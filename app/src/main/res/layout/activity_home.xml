@@ -17,6 +17,7 @@
             android:layout_weight="1"
             android:drawableRight="@drawable/lokacar_car_rent_75"
             android:text="@string/rent_car"
+            android:onClick="redirRentCar"
             />
 
 
@@ -25,7 +26,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/return_car"
-            android:drawableLeft="@drawable/lokacar_car_return_75"/>
+            android:drawableLeft="@drawable/lokacar_car_return_75"
+            android:onClick="redirReturnCar"/>
     </LinearLayout>
 
     <LinearLayout
@@ -40,14 +42,16 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/client_gestion"
-            android:drawableRight="@drawable/lokacar_client_75"/>
+            android:drawableRight="@drawable/lokacar_client_75"
+            android:onClick="redirClientMgmt"/>
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/stats"
-            android:drawableLeft="@drawable/lokacar_stats_75"/>
+            android:drawableLeft="@drawable/lokacar_stats_75"
+            android:onClick="redirAgencyMgmt"/>
     </LinearLayout>
 
     <LinearLayout
@@ -62,13 +66,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/parking"
-            android:drawableRight="@drawable/lokacar_parking_75"/>
+            android:drawableRight="@drawable/lokacar_parking_75"
+            android:onClick="redirAllParking"
+            />
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/search"
-            android:drawableLeft="@drawable/lokacar_search_75"/>
+            android:drawableLeft="@drawable/lokacar_search_75"
+            android:onClick="redirSearch"
+            />
+
     </LinearLayout>
 </LinearLayout>
