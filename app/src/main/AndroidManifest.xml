@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".Activities.HomeActivity" />
         <activity
-            android:name=".Activities.ReturnCarActivity"
+            android:name=".Activities.ReturnCarListActivity"
             android:parentActivityName=".Activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -27,7 +27,7 @@
                 android:value=".Activities.HomeActivity" />
         </activity>
         <activity
-            android:name=".Activities.RentCarActivity"
+            android:name=".Activities.RentCarListActivity"
             android:parentActivityName=".Activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -72,6 +72,20 @@
                 android:value=".Activities.HomeActivity" />
         </activity>
         <activity android:name=".Activities.CarDetailsActivity" />
+        <activity
+            android:name=".Activities.RentActivity"
+            android:parentActivityName=".Activities.CarDetailsActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.CarDetailsActivity" />
+        </activity>
+        <activity android:name=".Activities.ReturnActivity"
+            android:parentActivityName=".Activities.CarDetailsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.CarDetailsActivity" />
+        </activity>
         <activity android:name=".Activities.ClientDetailsActivity"></activity>
     </application>
 

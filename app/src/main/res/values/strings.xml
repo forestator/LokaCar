@@ -15,5 +15,7 @@
     <string name="number_of_seats">Nombre de places :</string>
     <string name="n_d_immatriculation">N° d\'immatriculation :</string>
     <string name="prix_par_jour">Prix par jour</string>
+    <string name="louez_moi">Louez moi !</string>
+    <string name="retour_de_la_voiture">Retour de la voiture</string>
     <string name="separator">--</string>
 </resources>

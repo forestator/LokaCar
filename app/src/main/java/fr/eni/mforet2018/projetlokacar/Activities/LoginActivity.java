@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import fr.eni.mforet2018.projetlokacar.DAO.Mock;
+import fr.eni.mforet2018.projetlokacar.DAO.OnFinishedDBListener;
 import fr.eni.mforet2018.projetlokacar.R;
 
 public class LoginActivity extends AppCompatActivity implements OnFinishedDBListener {

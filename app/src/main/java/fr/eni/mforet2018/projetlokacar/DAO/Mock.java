@@ -7,7 +7,6 @@ import android.util.Log;
 
 import java.time.LocalDate;
 
-import fr.eni.mforet2018.projetlokacar.Activities.OnFinishedDBListener;
 import fr.eni.mforet2018.projetlokacar.Entities.Agency;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
 import fr.eni.mforet2018.projetlokacar.Entities.Client;

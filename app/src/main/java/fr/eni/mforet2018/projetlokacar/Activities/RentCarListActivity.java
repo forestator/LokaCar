@@ -16,7 +16,7 @@ import fr.eni.mforet2018.projetlokacar.DAO.Connexion;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
 import fr.eni.mforet2018.projetlokacar.R;
 
-public class RentCarActivity extends AppCompatActivity implements ClickCarListener {
+public class RentCarListActivity extends AppCompatActivity implements ClickCarListener {
 
     private List<Car> notRentedCarList;
     private AppDatabase appDatabase;

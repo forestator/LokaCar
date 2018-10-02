@@ -121,5 +121,12 @@
 
         </LinearLayout>
     </LinearLayout>
-
+    <ToggleButton
+        android:id="@+id/swRent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textOff="@string/louez_moi"
+        android:textOn="@string/retour_de_la_voiture"
+        android:onClick="rentOrUnrentCar"
+        />
 </LinearLayout>

@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -17,7 +15,7 @@ import fr.eni.mforet2018.projetlokacar.DAO.Connexion;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
 import fr.eni.mforet2018.projetlokacar.R;
 
-public class ReturnCarActivity extends AppCompatActivity implements ClickCarListener {
+public class ReturnCarListActivity extends AppCompatActivity implements ClickCarListener {
 
     private List<Car> rentedCarsList;
     private AppDatabase appDatabase;
@@ -32,7 +30,7 @@ public class ReturnCarActivity extends AppCompatActivity implements ClickCarList
     }
 
     private void getCarDatas() {
-        new ReturnCarActivity.AsyncGetRentedCars().execute();
+        new ReturnCarListActivity.AsyncGetRentedCars().execute();
     }
 
     @Override

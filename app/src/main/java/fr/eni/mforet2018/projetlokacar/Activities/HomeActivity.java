@@ -19,13 +19,13 @@ public class HomeActivity extends AppCompatActivity {
 
     public void redirRentCar(View view) {
         Toast.makeText(this, "Rent car", Toast.LENGTH_SHORT).show();
-        Intent rentCarIntent = new Intent(this, RentCarActivity.class);
+        Intent rentCarIntent = new Intent(this, RentCarListActivity.class);
         startActivity(rentCarIntent);
     }
 
     public void redirReturnCar(View view) {
         Toast.makeText(this, "Return", Toast.LENGTH_SHORT).show();
-        Intent returnCarIntent = new Intent(this, ReturnCarActivity.class);
+        Intent returnCarIntent = new Intent(this, ReturnCarListActivity.class);
         startActivity(returnCarIntent);
     }
 
