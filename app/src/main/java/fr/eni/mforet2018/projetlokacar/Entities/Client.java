@@ -12,10 +12,10 @@ public class Client implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int clientId;
     private String lastName;
-    private String firtName;
+    private String firstName;
     private String phoneNumber;
     private String email;
-    private String mailAdresse;
+    private String mailAddress;
 
     public Client() {
     }
@@ -23,10 +23,10 @@ public class Client implements Parcelable {
     protected Client(Parcel in) {
         clientId = in.readInt();
         lastName = in.readString();
-        firtName = in.readString();
+        firstName = in.readString();
         phoneNumber = in.readString();
         email = in.readString();
-        mailAdresse = in.readString();
+        mailAddress = in.readString();
     }
 
     public static final Creator<Client> CREATOR = new Creator<Client>() {
@@ -57,12 +57,12 @@ public class Client implements Parcelable {
         this.lastName = lastName;
     }
 
-    public String getFirtName() {
-        return firtName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirtName(String firtName) {
-        this.firtName = firtName;
+    public void setFirstName(String firtName) {
+        this.firstName = firtName;
     }
 
     public String getPhoneNumber() {
@@ -81,12 +81,12 @@ public class Client implements Parcelable {
         this.email = email;
     }
 
-    public String getMailAdresse() {
-        return mailAdresse;
+    public String getMailAddress() {
+        return mailAddress;
     }
 
-    public void setMailAdresse(String mailAdresse) {
-        this.mailAdresse = mailAdresse;
+    public void setMailAddress(String mailAdresse) {
+        this.mailAddress = mailAdresse;
     }
 
     @Override
@@ -94,10 +94,10 @@ public class Client implements Parcelable {
         return "Client{" +
                 "id=" + clientId +
                 ", lastName='" + lastName + '\'' +
-                ", firtName='" + firtName + '\'' +
+                ", firtName='" + firstName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", mailAdresse='" + mailAdresse + '\'' +
+                ", mailAdresse='" + mailAddress + '\'' +
                 '}';
     }
 
@@ -110,9 +110,9 @@ public class Client implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(clientId);
         parcel.writeString(lastName);
-        parcel.writeString(firtName);
+        parcel.writeString(firstName);
         parcel.writeString(phoneNumber);
         parcel.writeString(email);
-        parcel.writeString(mailAdresse);
+        parcel.writeString(mailAddress);
     }
 }

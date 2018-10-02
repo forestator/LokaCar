@@ -47,30 +47,30 @@ public class Mock extends AsyncTask<Void, Void, Void> {
 
         // Create clients;
         Client pierre = new Client();
-        pierre.setFirtName("Pierre");
+        pierre.setFirstName("Pierre");
         pierre.setLastName("Cormier");
-        pierre.setMailAdresse("12 rue de la défaite 44000 Nantes");
+        pierre.setMailAddress("12 rue de la défaite 44000 Nantes");
         pierre.setClientId((int) db.clientDAO().insert(pierre));
 
         // Create clients;
         Client lucio = new Client();
-        lucio.setFirtName("Lucio");
+        lucio.setFirstName("Lucio");
         lucio.setLastName("Bukowski");
-        lucio.setMailAdresse("21, Rue de la plume 56000 Vannes");
+        lucio.setMailAddress("21, Rue de la plume 56000 Vannes");
         lucio.setClientId((int) db.clientDAO().insert(lucio));
 
         // Create clients;
         Client jean = new Client();
-        jean.setFirtName("Jean-Claude");
+        jean.setFirstName("Jean-Claude");
         jean.setLastName("Dus");
-        jean.setMailAdresse("55, rue des tombeurs 33000 Bordeaux");
+        jean.setMailAddress("55, rue des tombeurs 33000 Bordeaux");
         jean.setClientId((int) db.clientDAO().insert(jean));
 
         // Create clients;
         Client dooz = new Client();
-        dooz.setFirtName("Dooz");
+        dooz.setFirstName("Dooz");
         dooz.setLastName("Kawa");
-        dooz.setMailAdresse("45, rue des étoiles du sol 67000 Strasbourg");
+        dooz.setMailAddress("45, rue des étoiles du sol 67000 Strasbourg");
         dooz.setClientId((int) db.clientDAO().insert(dooz));
 
         // Create vehicules
