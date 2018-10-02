@@ -1,5 +1,6 @@
 package fr.eni.mforet2018.projetlokacar.Activities;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import fr.eni.mforet2018.projetlokacar.Adapters.CarAdapter;
 import fr.eni.mforet2018.projetlokacar.Adapters.ClickClientListener;
 import fr.eni.mforet2018.projetlokacar.Adapters.ClientAdapter;
 import fr.eni.mforet2018.projetlokacar.DAO.AppDatabase;
@@ -16,7 +16,7 @@ import fr.eni.mforet2018.projetlokacar.DAO.Connexion;
 import fr.eni.mforet2018.projetlokacar.Entities.Client;
 import fr.eni.mforet2018.projetlokacar.R;
 
-public class ClientManagementActivity extends AppCompatActivity implements ClickClientListener {
+public class ClientListActivity extends AppCompatActivity implements ClickClientListener {
 
     private List<Client> clients;
     private AppDatabase appDatabase;
@@ -26,7 +26,7 @@ public class ClientManagementActivity extends AppCompatActivity implements Click
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_management);
+        setContentView(R.layout.activity_client_list);
         appDatabase = Connexion.getConnexion(this);
         getClientDatas();
     }
@@ -39,6 +39,10 @@ public class ClientManagementActivity extends AppCompatActivity implements Click
     public void onClickClient(Client client) {
         String infos = client.getClientId() + " " + client.getLastName() + " " + client.getFirstName();
         Toast.makeText(this, infos, Toast.LENGTH_SHORT).show();
+
+        Intent cliDetailsIntent = new Intent(this, ClientDetailsActivity.class);
+        cliDetailsIntent.putExtra("client", client);
+        startActivity(cliDetailsIntent);
     }
 
     private void callback() {

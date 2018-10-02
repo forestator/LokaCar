@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import fr.eni.mforet2018.projetlokacar.Entities.Agency;
 import fr.eni.mforet2018.projetlokacar.R;
 
 public class HomeActivity extends AppCompatActivity {
@@ -32,8 +31,8 @@ public class HomeActivity extends AppCompatActivity {
 
     public void redirClientMgmt(View view) {
         Toast.makeText(this, "Client Management", Toast.LENGTH_SHORT).show();
-        Intent clientMgmtIntent = new Intent(this, ClientManagementActivity.class);
-        startActivity(clientMgmtIntent);
+        Intent clientListIntent = new Intent(this, ClientListActivity.class);
+        startActivity(clientListIntent);
     }
 
     public void redirAgencyMgmt(View view) {

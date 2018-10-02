@@ -36,7 +36,7 @@
                 android:value=".Activities.HomeActivity" />
         </activity>
         <activity
-            android:name=".Activities.ClientManagementActivity"
+            android:name=".Activities.ClientListActivity"
             android:parentActivityName=".Activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -71,7 +71,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-        <activity android:name=".Activities.CarDetailsActivity"></activity>
+        <activity android:name=".Activities.CarDetailsActivity" />
+        <activity android:name=".Activities.ClientDetailsActivity"></activity>
     </application>
 
 </manifest>
