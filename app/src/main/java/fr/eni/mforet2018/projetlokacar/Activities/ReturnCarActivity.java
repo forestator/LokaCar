@@ -43,17 +43,7 @@ public class ReturnCarActivity extends AppCompatActivity implements ClickCarList
 
         @Override
         protected Void doInBackground(Void... voids) {
-            List<Car> CarsList = appDatabase.carDAO().getAllNotRentedCars();
-            Log.i("RETURN_CAR","DB ok getCArs");
-            for(Car car : CarsList){
-                Log.i("RETURN_CAR","1");
-                if (!car.isRented()){
-                    rentedCarsList.add(car);
-                    Log.i("RETURN_CAR","2");
-                }
-                Log.i("RETURN_CAR","3");
-            }
-            Log.i("RETURN_CAR","DB ok tri car");
+            rentedCarsList = appDatabase.carDAO().getAllRentedCars();
             return null;
         }
 

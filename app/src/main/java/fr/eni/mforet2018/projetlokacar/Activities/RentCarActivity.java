@@ -43,11 +43,6 @@ public class RentCarActivity extends AppCompatActivity implements ClickCarListen
         @Override
         protected Void doInBackground(Void... voids) {
             notRentedCarList = appDatabase.carDAO().getAllNotRentedCars();
-            for(Car car : notRentedCarList){
-                if (car.isRented()){
-                    notRentedCarList.remove(car);
-                }
-            }
             return null;
         }
 
