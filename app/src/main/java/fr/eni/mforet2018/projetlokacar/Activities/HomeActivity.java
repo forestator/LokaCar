@@ -43,7 +43,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void redirAllParking(View view) {
-        Toast.makeText(this, "type d'activité à choisir !", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Show Parking", Toast.LENGTH_SHORT).show();
+        Intent showParkingIntent = new Intent(this, ParkingActivity.class);
+        startActivity(showParkingIntent);
     }
 
     public void redirSearch(View view) {

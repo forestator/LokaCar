@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +36,11 @@ public class CarAdapter  extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
         holder.tvBrandName.setText(car.getBrand());
         holder.tvModele.setText(car.getModel());
         holder.tvPlateNumber.setText(car.getPlateNumber());
+        if (car.isRented()){
+            holder.iCar.setImageResource(R.drawable.lokacar_ic_car_blue_90);
+        } else {
+            holder.iCar.setImageResource(R.drawable.lokacar_ic_car_yellow_90);
+        }
     }
 
     @Override
@@ -46,12 +52,14 @@ public class CarAdapter  extends RecyclerView.Adapter<CarAdapter.ViewHolder>{
         private TextView tvPlateNumber;
         private TextView tvModele;
         private TextView tvBrandName;
+        private ImageView iCar;
 
         public ViewHolder(View itemView) {
             super(itemView);
             this.tvPlateNumber = itemView.findViewById(R.id.tvPlateNumber);
             this.tvModele = itemView.findViewById(R.id.tvCarModel);
             this.tvBrandName = itemView.findViewById(R.id.tvCarBrand);
+            this.iCar = itemView.findViewById(R.id.ImgCar);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

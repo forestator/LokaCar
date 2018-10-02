@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 
 @Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
+        TODO: gérer les foreignKeys
         foreignKeys = {
                 @ForeignKey(entity = Client.class,
                         parentColumns = "clientId",

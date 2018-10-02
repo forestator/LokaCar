@@ -16,9 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Activities.HomeActivity" />
-
         <activity
             android:name=".Activities.ReturnCarActivity"
             android:parentActivityName=".Activities.HomeActivity">
@@ -28,7 +26,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".Activities.RentCarActivity"
             android:parentActivityName=".Activities.HomeActivity">
@@ -38,7 +35,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".Activities.ClientManagementActivity"
             android:parentActivityName=".Activities.HomeActivity">
@@ -48,7 +44,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".Activities.AgencyManagementActivity"
             android:parentActivityName=".Activities.HomeActivity">
@@ -58,7 +53,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-
         <activity
             android:name=".Activities.SearchActivity"
             android:parentActivityName=".Activities.HomeActivity">
@@ -68,6 +62,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
+        <activity android:name=".Activities.ParkingActivity"></activity>
     </application>
 
 </manifest>

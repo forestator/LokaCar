@@ -7,4 +7,8 @@
     <string name="search">Rechercher</string>
     <string name="parking">Parc automobile</string>
     <string name="stats">Stats App</string>
+    <string name="title_activity_parking">ParkingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="Separator">--</string>
 </resources>
