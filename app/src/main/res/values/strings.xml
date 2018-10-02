@@ -18,4 +18,9 @@
     <string name="louez_moi">Louez moi !</string>
     <string name="retour_de_la_voiture">Retour de la voiture</string>
     <string name="separator">--</string>
+    <string name="lastName">Nom :</string>
+    <string name="firstName">Prénom :</string>
+    <string name="address">Adresse :</string>
+    <string name="email">Email :</string>
+    <string name="phoneNumber">Téléphone</string>
 </resources>

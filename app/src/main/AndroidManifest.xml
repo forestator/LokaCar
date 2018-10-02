@@ -80,13 +80,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.CarDetailsActivity" />
         </activity>
-        <activity android:name=".Activities.ReturnActivity"
+        <activity
+            android:name=".Activities.ReturnActivity"
             android:parentActivityName=".Activities.CarDetailsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.CarDetailsActivity" />
         </activity>
-        <activity android:name=".Activities.ClientDetailsActivity"></activity>
+        <activity
+            android:name=".Activities.ClientDetailsActivity"
+            android:parentActivityName=".Activities.ClientListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ClientListActivity" />
+        </activity>
     </application>
 
 </manifest>

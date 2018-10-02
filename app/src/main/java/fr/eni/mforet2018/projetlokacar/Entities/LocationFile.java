@@ -14,15 +14,19 @@ import java.time.LocalDate;
 
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
 @Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
-        TODO: gérer les foreignKeys
+        // TODO: gérer les foreignKeys
         foreignKeys = {
                 @ForeignKey(entity = Client.class,
                         parentColumns = "clientId",
-                        childColumns = "clientId"),
+                        childColumns = "clientId",
+                        onDelete = CASCADE),
                 @ForeignKey(entity = Car.class,
                         parentColumns = "plateNumber",
-                        childColumns = "carPlateNumber")
+                        childColumns = "carPlateNumber",
+                        onDelete = CASCADE)
         }*/)
 public class LocationFile implements Parcelable {
 
