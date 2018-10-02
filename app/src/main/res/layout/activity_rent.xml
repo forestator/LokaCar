@@ -1,185 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.RentActivity"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:orientation="vertical"
+        tools:context=".activity.RentActivity">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="vertical"
-            android:padding="5dp"
-            android:layout_marginTop="20dp">
+            android:padding="5dp">
 
             <TextView
+                android:id="@+id/tvRentCarBrand"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tvRentCarBrand"
                 android:layout_marginTop="10dp"
-                android:textSize="30dp"
                 android:gravity="center"
-                android:text="Louer : marque -- marque"
-                />
+                android:text="@string/louer_marque_marque"
+                android:textSize="30dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                >
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
 
                 <EditText
+                    android:id="@+id/seekForClient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.3"
-                    android:hint="Nom du client"
-                    android:id="@+id/seekForClient"/>
+                    android:hint="@string/nom_du_client" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="recherche"
                     android:layout_weight="0.7"
-                    android:onClick="onClickRechercheClient"/>
-
-
+                    android:onClick="onClickSearchClient"
+                    android:text="@string/recherche" />
             </LinearLayout>
 
             <ListView
+                android:id="@+id/listViewClient"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/listViewClient">
-
-            </ListView>
+                ></ListView>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@color/colorAccent"
-            >
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                >
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:text="Nom du client:"/>
+                    android:text="@string/nom_du_client" />
+
                 <TextView
                     android:id="@+id/nomClient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.4"/>
-                <TextView
-                    android:id="@+id/prenomClient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.4"/>
+                    android:layout_weight="0.8" />
 
             </LinearLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:layout_marginTop="10dp"
-                    android:text="Véhicule:"/>
-                <TextView
-                    android:id="@+id/vehicule"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="0.4"/>
-                <FrameLayout
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp">
-                    <Button
-                        android:id="@+id/detailVehicule"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:gravity="center"
-                        android:minHeight="0dp"
-                        android:minWidth="0dp"
-                        android:onClick="carDetail"
-                        />
-                </FrameLayout>
-            </FrameLayout>
         </LinearLayout>
-    </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/picDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="choisir une date"
-                android:onClick="datePicker"/>
+                android:onClick="datePicker"
+                android:text="@string/choisir_une_date" />
+
             <TextView
-                android:layout_below="@+id/picDate"
+                android:id="@+id/showDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/picDate"
                 android:layout_marginTop="20dp"
-                android:id="@+id/showDate"
-                android:textSize="18dp"/>
+                android:textSize="18sp" />
+
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            >
+            android:layout_marginRight="20dp">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:textSize="18dp"
-                android:text="Nbre jours location:"/>
+                android:text="Nbre jours location:"
+                android:textSize="18dp" />
 
             <EditText
-                android:id="@+id/nbreJours"
+                android:id="@+id/numberOfDays"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:inputType="number"
-                android:padding="10dp" />
+                android:padding="10dp"
+                android:text="0"
+                />
 
         </LinearLayout>
         <LinearLayout
@@ -187,35 +141,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp">
 
-            <Button
-                android:id="@+id/listeVehicule"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="rechercher un véhicule"
-                android:onClick="getVehicles"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
             <Button
                 android:id="@+id/validBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Valider la sélection"
-                android:onClick="validateLocation"/>
+                android:onClick="confirmRent"
+                android:text="Valider la sélection" />
         </LinearLayout>
+    </LinearLayout>
 </ScrollView>

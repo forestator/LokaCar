@@ -14,6 +14,7 @@ public interface CarDAO extends GenericDAO<Car> {
     String SELECT_ALL_NOT_RENTED = "SELECT * FROM car WHERE isRented = 0";
     String SELECT_ALL_RENTED = "SELECT * FROM car WHERE isRented = 1";
     String SELECT_ALL = "SELECT * FROM car";
+    String SELECT_CAR_BY_PLATENUMBER = "SELECT * FROM car WHERE plateNumber LIKE :carPlateNumber";
 
     @Query("DELETE FROM Car")
     void deleteAll();
@@ -26,4 +27,7 @@ public interface CarDAO extends GenericDAO<Car> {
 
     @Query(SELECT_ALL)
     List<Car> getAllCars();
+
+    @Query(SELECT_CAR_BY_PLATENUMBER)
+    Car getCarFromPlate(String carPlateNumber);
 }

@@ -23,4 +23,9 @@
     <string name="address">Adresse :</string>
     <string name="email">Email :</string>
     <string name="phoneNumber">Téléphone</string>
+    <string name="nom_du_client">Nom du client pour la location :</string>
+    <string name="recherche">recherche</string>
+    <string name="louer_marque_marque">Louer : marque -- marque</string>
+    <string name="v_hicule">Véhicule:</string>
+    <string name="choisir_une_date">choisir une date de début de location</string>
 </resources>
