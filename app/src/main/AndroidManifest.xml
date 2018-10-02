@@ -16,12 +16,58 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ReturnCarActivity" />
-        <activity android:name=".Activities.RentCarActivity" />
+
         <activity android:name=".Activities.HomeActivity" />
-        <activity android:name=".Activities.ClientManagementActivity" />
-        <activity android:name=".Activities.AgencyManagementActivity" />
-        <activity android:name=".Activities.SearchActivity"></activity>
+
+        <activity
+            android:name=".Activities.ReturnCarActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activities.RentCarActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activities.ClientManagementActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activities.AgencyManagementActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
+
+        <activity
+            android:name=".Activities.SearchActivity"
+            android:parentActivityName=".Activities.HomeActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
     </application>
 
 </manifest>
