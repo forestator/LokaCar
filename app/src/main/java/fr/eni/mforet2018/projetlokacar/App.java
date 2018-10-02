@@ -12,7 +12,6 @@ public class App extends Application {
 
     private static App instance;
     private AppDatabase database;
-    private String password = "ananas";
 
     public static App get() {
         return instance;
@@ -25,13 +24,12 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i("MAX","BONSOIR");
+        Log.i("MAXCRETEDB","BONSOIR");
         database = Room
                 .databaseBuilder(getApplicationContext(), AppDatabase.class, "AgencyDB")
                 .fallbackToDestructiveMigration()
                 .build();
         new Mock().execute();
-
         instance = this;
     }
 }

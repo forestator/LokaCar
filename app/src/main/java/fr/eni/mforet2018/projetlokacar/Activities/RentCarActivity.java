@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import fr.eni.mforet2018.projetlokacar.App;
 import fr.eni.mforet2018.projetlokacar.DAO.AppDatabase;
 import fr.eni.mforet2018.projetlokacar.DAO.Connexion;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
@@ -21,6 +22,7 @@ public class RentCarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent_car);
+        App.get();
         appDatabase = Connexion.getConnexion(this);
         getCarDatas();
     }
