@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">ProjetLokaCar</string>
     <string name="Lokacar">Lokacar</string>
+    <string name="rent_car">Louer une voiture</string>
+    <string name="return_car">Retour d\'une voiture</string>
+    <string name="client_gestion">Gestion des clients</string>
+    <string name="search">Rechercher une Voiture</string>
+    <string name="parking">Parc automobile</string>
+    <string name="stats">Stats App</string>
 </resources>
