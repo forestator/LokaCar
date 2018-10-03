@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import fr.eni.mforet2018.projetlokacar.R;
 
-public class SearchActivity extends AppCompatActivity {
+public class LocationFileListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_location_file_list);
     }
 }

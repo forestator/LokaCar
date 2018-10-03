@@ -64,7 +64,7 @@
                 android:value=".Activities.HomeActivity" />
         </activity>
         <activity
-            android:name=".Activities.SearchActivity"
+            android:name=".Activities.LocationFileListActivity"
             android:label="@string/title_current_rents"
             android:parentActivityName=".Activities.HomeActivity">
 

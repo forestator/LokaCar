@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public void redirSearch(View view) {
         Toast.makeText(this, "search client or car", Toast.LENGTH_SHORT).show();
-        Intent searchIntent = new Intent(this, SearchActivity.class);
+        Intent searchIntent = new Intent(this, LocationFileListActivity.class);
         startActivity(searchIntent);
     }
 }

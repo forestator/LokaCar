@@ -75,7 +75,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="@string/current_rents"
-            android:drawableLeft="@drawable/lokacar_search_75"
+            android:drawableLeft="@drawable/lokacar_locations_75"
             android:onClick="redirSearch"
             />
 

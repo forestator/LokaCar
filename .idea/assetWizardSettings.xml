@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/places/ic_airport_shuttle_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_subject_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,10 +33,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3f9c21" />
-                            <entry key="outputName" value="lokacar_ic_add_car_24" />
+                            <entry key="color" value="d66b07" />
+                            <entry key="height" value="75" />
+                            <entry key="outputName" value="lokacar_locations_75" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\cklavins2018" />
+                            <entry key="width" value="75" />
                           </map>
                         </option>
                       </PersistentState>
