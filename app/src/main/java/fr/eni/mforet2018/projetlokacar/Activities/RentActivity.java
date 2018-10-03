@@ -119,6 +119,7 @@ public class RentActivity extends AppCompatActivity {
             Car carToUpdate = appDatabase.carDAO().getCarFromPlate(locationFile.getCarPlateNumber());
             carToUpdate.setRented(true);
             appDatabase.carDAO().update(carToUpdate);
+            Toast.makeText(this, "Location enregistrée !", Toast.LENGTH_SHORT).show();
             Intent searchIntent = new Intent(this, HomeActivity.class);
             startActivity(searchIntent);
         }

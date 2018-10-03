@@ -67,15 +67,8 @@ public class ClientListActivity extends AppCompatActivity implements ClickClient
     public void onClickSearchClient(View view) {
         EditText editSearchClient = findViewById(R.id.seekForClient);
         String search = editSearchClient.getText().toString();
-        searchedClientList = appDatabase.clientDAO().searchClient(search);
-        List<String> displayClientsNames = new ArrayList<>();
-        //Affichage liste clients
-        for(Client client : searchedClientList){
-            displayClientsNames.add(client.getFirstName()+" "+client.getLastName());
-        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, displayClientsNames);
-        ListView listView = findViewById(R.id.listViewClient);
-        listView.setAdapter(adapter);
+        clients = appDatabase.clientDAO().searchClient(search);
+        callback();
     }
 
     private class AsyncGetClients extends AsyncTask<Void, Void, Void> {
