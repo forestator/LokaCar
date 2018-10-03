@@ -4,10 +4,9 @@
     <string name="rent_car">Louer une voiture</string>
     <string name="return_car">Retour d\'une voiture</string>
     <string name="client_gestion">Gestion des clients</string>
-    <string name="search">Rechercher</string>
+    <string name="current_rents">Locations</string>
     <string name="parking">Parc automobile</string>
     <string name="stats">Stats App</string>
-    <string name="title_activity_parking">ParkingActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="Separator">--</string>
@@ -37,4 +36,17 @@
     <string name="nombre_de_voitures_dans_le_parc">Nombre de voitures dans le parc :</string>
     <string name="nombre_de_voitures_lou_es">Nombre de voitures louées :</string>
     <string name="chiffre_d_affaire">Chiffre d\'affaire :</string>
+    <string name="title_connection">Connexion LokaCar</string>
+    <string name="title_home">LokaCar - Agence Michel</string>
+    <string name="title_return_car_list">Véhicules en Location</string>
+    <string name="title_rent_car">Louer un Véhicule</string>
+    <string name="title_client_list">Liste des Clients</string>
+    <string name="title_agency_mgmt">Gestion de l\'Agence</string>
+    <string name="title_current_rents">Locations en Cours</string>
+    <string name="title_parking">Tous les Véhicules</string>
+    <string name="title_car_detail">Détails du Véhicule</string>
+    <string name="title_rent_cars">Véhicules à Louer</string>
+    <string name="title_return_car">Retour d\'un Véhicule</string>
+    <string name="title_client_detail">Détails du Client</string>
+    <string name="title_client_add">Nouveau Client</string>
 </resources>

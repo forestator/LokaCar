@@ -8,18 +8,10 @@
     android:padding="20dp"
     tools:context=".Activities.ClientAddActivity">
 
-    <TextView
-        android:id="@+id/tvNCTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/new_client" />
+
 
     <LinearLayout
         android:id="@+id/llNC_1"
-        android:layout_below="@+id/tvNCTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

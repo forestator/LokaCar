@@ -9,14 +9,6 @@
     android:layout_marginRight="30dp"
     >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/gestion_de_l_agence" />
 
     <LinearLayout
         android:layout_width="match_parent"

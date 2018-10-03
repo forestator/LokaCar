@@ -9,18 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.LoginActivity">
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_connection">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.HomeActivity" />
+        <activity
+            android:name=".Activities.HomeActivity"
+            android:label="@string/title_home" />
         <activity
             android:name=".Activities.ReturnCarListActivity"
+            android:label="@string/title_return_car_list"
             android:parentActivityName=".Activities.HomeActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -28,8 +32,8 @@
         </activity>
         <activity
             android:name=".Activities.RentCarListActivity"
+            android:label="@string/title_rent_cars"
             android:parentActivityName=".Activities.HomeActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -37,8 +41,8 @@
         </activity>
         <activity
             android:name=".Activities.ClientListActivity"
+            android:label="@string/title_client_list"
             android:parentActivityName=".Activities.HomeActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -46,6 +50,7 @@
         </activity>
         <activity
             android:name=".Activities.AgencyManagementActivity"
+            android:label="@string/title_agency_mgmt"
             android:parentActivityName=".Activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -55,8 +60,8 @@
         </activity>
         <activity
             android:name=".Activities.SearchActivity"
+            android:label="@string/title_current_rents"
             android:parentActivityName=".Activities.HomeActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -64,18 +69,25 @@
         </activity>
         <activity
             android:name=".Activities.ParkingActivity"
+            android:label="@string/title_parking"
             android:parentActivityName=".Activities.HomeActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
-        <activity android:name=".Activities.CarDetailsActivity" />
+        <activity
+            android:name=".Activities.CarDetailsActivity"
+            android:label="@string/title_car_detail"
+            android:parentActivityName=".Activities.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.HomeActivity" />
+        </activity>
         <activity
             android:name=".Activities.RentActivity"
-            android:parentActivityName=".Activities.HomeActivity">
-
+            android:parentActivityName=".Activities.HomeActivity"
+            android:label="@string/title_rent_car">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -83,23 +95,28 @@
         </activity>
         <activity
             android:name=".Activities.ReturnActivity"
-            android:parentActivityName=".Activities.HomeActivity">
+            android:parentActivityName=".Activities.HomeActivity"
+            android:label="@string/title_return_car">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.HomeActivity" />
         </activity>
         <activity
             android:name=".Activities.ClientDetailsActivity"
-            android:parentActivityName=".Activities.ClientListActivity">
+            android:parentActivityName=".Activities.ClientListActivity"
+            android:label="@string/title_client_detail">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.ClientListActivity" />
         </activity>
-        <activity android:name=".Activities.ClientAddActivity"
-            android:parentActivityName=".Activities.ClientListActivity">
+        <activity
+            android:name=".Activities.ClientAddActivity"
+            android:parentActivityName=".Activities.ClientListActivity"
+            android:label="@string/title_client_add">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ClientListActivity" /></activity>
+                android:value=".Activities.ClientListActivity" />
+        </activity>
     </application>
 
 </manifest>
