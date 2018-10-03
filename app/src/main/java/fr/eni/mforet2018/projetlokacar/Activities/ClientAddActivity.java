@@ -1,5 +1,6 @@
 package fr.eni.mforet2018.projetlokacar.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,15 +8,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import fr.eni.mforet2018.projetlokacar.DAO.AppDatabase;
+import fr.eni.mforet2018.projetlokacar.DAO.Connexion;
 import fr.eni.mforet2018.projetlokacar.Entities.Client;
 import fr.eni.mforet2018.projetlokacar.R;
 
 public class ClientAddActivity extends AppCompatActivity {
 
+    private AppDatabase appDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_add);
+
+        appDatabase = Connexion.getConnexion(this);
+
     }
 
     public void emptyForm(View view) {
@@ -50,6 +58,9 @@ public class ClientAddActivity extends AppCompatActivity {
         newClient.setMailAddress(addresss);
         newClient.setPhoneNumber(phoneNb);
 
-        Toast.makeText(this, newClient.toString(), Toast.LENGTH_SHORT).show();
+        long idGenerated = appDatabase.clientDAO().insert(newClient);
+
+        Intent listClient = new Intent(this, ClientListActivity.class);
+        startActivity(listClient);
     }
 }
