@@ -31,7 +31,6 @@
     <string name="louer_marque_marque">Louer : marque -- marque</string>
     <string name="v_hicule">Véhicule:</string>
     <string name="choisir_une_date">choisir une date de début de location</string>
-    <string name="gestion_de_l_agence">Gestion de l\'agence</string>
     <string name="nombre_de_clients">Nombre de clients :</string>
     <string name="nombre_de_voitures_dans_le_parc">Nombre de voitures dans le parc :</string>
     <string name="nombre_de_voitures_lou_es">Nombre de voitures louées :</string>
@@ -42,7 +41,7 @@
     <string name="title_return_car_list">Véhicules en Location</string>
     <string name="title_rent_car">Louer un Véhicule</string>
     <string name="title_client_list">Liste des Clients</string>
-    <string name="title_agency_mgmt">Gestion de l\'Agence</string>
+    <string name="title_agency_mgmt">Gestion de l\'Agence Michel</string>
     <string name="title_current_rents">Locations en Cours</string>
     <string name="title_parking">Tous les Véhicules</string>
     <string name="title_car_detail">Détails du Véhicule</string>

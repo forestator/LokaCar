@@ -10,10 +10,11 @@
         android:id="@+id/btnAddClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="5dp"
         android:text="@string/add_client"
         android:onClick="redirNewClient"
-        android:drawableTop="@drawable/lokacar_ic_add_client_24"
+        android:drawableStart="@drawable/lokacar_ic_add_client_24"
+        android:drawablePadding="7dp"
         android:layout_centerHorizontal="true"/>
 
     <LinearLayout
@@ -21,7 +22,6 @@
         android:layout_below="@id/btnAddClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:padding="5dp">
 
@@ -47,8 +47,6 @@
                 android:text="@string/recherche" />
         </LinearLayout>
     </LinearLayout>
-
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/ClientList"
