@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
@@ -39,6 +41,24 @@ public class ParkingActivity extends AppCompatActivity implements ClickCarListen
         Intent detailsIntent = new Intent(this, CarDetailsActivity.class);
         detailsIntent.putExtra("car",car);
         startActivity(detailsIntent);
+    }
+
+    public void SearchByMarque(View view) {
+        EditText et = findViewById(R.id.seekMarque);
+        carsList = appDatabase.carDAO().getCarsByMarque(et.getText().toString());
+        callback();
+    }
+
+    public void onClickSearchFuel(View view) {
+        EditText et = findViewById(R.id.seekFuel);
+        carsList = appDatabase.carDAO().getCarsByFuel(et.getText().toString());
+        callback();
+    }
+
+    public void onClickSearchType(View view) {
+        EditText et = findViewById(R.id.seekType);
+        carsList = appDatabase.carDAO().getCarsByType(et.getText().toString());
+        callback();
     }
 
     private class AsyncGetCars extends AsyncTask<Void, Void, Void> {

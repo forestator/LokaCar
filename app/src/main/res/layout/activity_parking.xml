@@ -6,10 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ParkingActivity">
 
+    <LinearLayout
+        android:id="@+id/linearSeekMarque"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/seekMarque"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:hint="@string/marque_recherch_e" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:onClick="SearchByMarque"
+            android:text="@string/recherche" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearseekFuel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearSeekMarque"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/seekFuel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:hint="@string/type_de_carburant" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:onClick="onClickSearchFuel"
+            android:text="@string/recherche" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearSeekType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearseekFuel"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/seekType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3"
+            android:hint="@string/type_de_voiture" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.7"
+            android:onClick="onClickSearchType"
+            android:text="@string/recherche" />
+    </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/linearSeekType"
         android:id="@+id/AllCarsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 </RelativeLayout>

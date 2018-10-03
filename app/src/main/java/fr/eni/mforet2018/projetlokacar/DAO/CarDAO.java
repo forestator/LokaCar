@@ -2,6 +2,7 @@ package fr.eni.mforet2018.projetlokacar.DAO;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Query;
+import android.text.Editable;
 
 import java.util.List;
 
@@ -33,4 +34,13 @@ public interface CarDAO extends GenericDAO<Car> {
 
     @Query("SELECT COUNT(*) from car")
     int getNumberOfCars();
+
+    @Query("SELECT * from car WHERE brand LIKE :text")
+    List<Car> getCarsByMarque(String text);
+
+    @Query("SELECT * from car WHERE fuel LIKE :text")
+    List<Car> getCarsByFuel(String text);
+
+    @Query("SELECT * from car WHERE type LIKE :text")
+    List<Car> getCarsByType(String text);
 }

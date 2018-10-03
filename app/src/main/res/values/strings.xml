@@ -36,6 +36,7 @@
     <string name="nombre_de_voitures_dans_le_parc">Nombre de voitures dans le parc :</string>
     <string name="nombre_de_voitures_lou_es">Nombre de voitures louées :</string>
     <string name="chiffre_d_affaire">Chiffre d\'affaire :</string>
+    <string name="marque_recherch_e">marque recherchée</string>
     <string name="title_connection">Connexion LokaCar</string>
     <string name="title_home">LokaCar - Agence Michel</string>
     <string name="title_return_car_list">Véhicules en Location</string>
@@ -49,4 +50,5 @@
     <string name="title_return_car">Retour d\'un Véhicule</string>
     <string name="title_client_detail">Détails du Client</string>
     <string name="title_client_add">Nouveau Client</string>
+    <string name="type_de_voiture">Type de voiture :</string>
 </resources>
