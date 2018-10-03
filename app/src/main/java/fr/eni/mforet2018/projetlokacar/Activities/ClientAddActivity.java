@@ -58,7 +58,9 @@ public class ClientAddActivity extends AppCompatActivity {
         newClient.setMailAddress(addresss);
         newClient.setPhoneNumber(phoneNb);
 
-        long idGenerated = appDatabase.clientDAO().insert(newClient);
+        appDatabase.clientDAO().insert(newClient);
+
+        Toast.makeText(this, "Client ajouté au Registre !", Toast.LENGTH_SHORT).show();
 
         Intent listClient = new Intent(this, ClientListActivity.class);
         startActivity(listClient);

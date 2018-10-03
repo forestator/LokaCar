@@ -61,6 +61,12 @@ public class ParkingActivity extends AppCompatActivity implements ClickCarListen
         callback();
     }
 
+    public void redirNewCar(View view) {
+        Toast.makeText(this, "Nouvelle voiture", Toast.LENGTH_SHORT).show();
+        Intent redirAddCar = new Intent(this, CarAddActivity.class);
+        startActivity(redirAddCar);
+    }
+
     private class AsyncGetCars extends AsyncTask<Void, Void, Void> {
 
         @Override

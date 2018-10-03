@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
-    tools:context=".Activities.ClientAddActivity">
-
+    android:padding="10dp"
+    tools:context=".Activities.CarAddActivity">
 
     <LinearLayout
-        android:id="@+id/llNC_1"
+        android:id="@+id/llNCa_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -22,22 +20,23 @@
             android:layout_gravity="center"
             android:layout_weight="0.75"
             android:gravity="start"
-            android:text="@string/lastName"
+            android:text="@string/car_plate"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/edNCLastName"
+            android:id="@+id/edNCaPlate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:inputType="text"/>
+            android:inputType="text" />
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llNC_2"
+        android:id="@+id/llNCa_2"
+        android:layout_below="@+id/llNCa_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llNC_1"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
@@ -48,23 +47,23 @@
             android:layout_gravity="center"
             android:layout_weight="0.75"
             android:gravity="start"
-            android:text="@string/firstName"
+            android:text="@string/car_brand"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/edNCFirstName"
+            android:id="@+id/edNCaBrand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:inputType="text"/>
+            android:inputType="text" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llNC_3"
+        android:id="@+id/llNCa_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llNC_2"
+        android:layout_below="@+id/llNCa_2"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
@@ -75,23 +74,23 @@
             android:layout_gravity="center"
             android:layout_weight="0.75"
             android:gravity="start"
-            android:text="@string/address"
+            android:text="@string/car_model"
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/edNCAddress"
+            android:id="@+id/edNCaModel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:inputType="textPostalAddress"/>
+            android:inputType="text" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llNC_4"
+        android:id="@+id/llNCa_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/llNC_3"
+        android:layout_below="@+id/llNCa_3"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
@@ -102,23 +101,22 @@
             android:layout_gravity="center"
             android:layout_weight="0.75"
             android:gravity="start"
-            android:text="@string/email"
+            android:text="@string/car_type"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/edNCEmail"
+        <Spinner
+            android:id="@+id/spCarType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:inputType="textEmailAddress"/>
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llNC_5"
+        android:id="@+id/llNCa_5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llNC_4"
+        android:layout_below="@+id/llNCa_4"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
@@ -129,20 +127,73 @@
             android:layout_gravity="center"
             android:layout_weight="0.75"
             android:gravity="start"
-            android:text="@string/phoneNumber"
+            android:text="@string/car_fuel"
             android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/edNCPhone"
+        <Spinner
+            android:id="@+id/spCarFuel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.25"
-            android:inputType="phone"/>
+            android:layout_weight="0.25" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llNC_6"
+        android:id="@+id/llNCa_6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llNCa_5"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.75"
+            android:gravity="start"
+            android:text="@string/car_seat_numb"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edNCaSeatsNb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNCa_7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llNCa_6"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0.75"
+            android:gravity="start"
+            android:text="@string/car_price"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edNCaPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.25"
+            android:inputType="numberDecimal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNCa_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -163,8 +214,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:drawableTop="@drawable/lokacar_ic_add_24"
-            android:onClick="createClient"
-            android:text="@string/createClient" />
+            android:onClick="createCar"
+            android:text="@string/createCar" />
 
     </LinearLayout>
 

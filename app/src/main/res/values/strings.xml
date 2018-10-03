@@ -50,4 +50,14 @@
     <string name="title_client_detail">Détails du Client</string>
     <string name="title_client_add">Nouveau Client</string>
     <string name="type_de_voiture">Type de voiture :</string>
+    <string name="add_car">Ajouter un Véhicule</string>
+    <string name="title_car_add">Nouveau Véhicule</string>
+    <string name="createCar">Ajouter Véhicule</string>
+    <string name="car_type">Type :</string>
+    <string name="car_brand">Marque :</string>
+    <string name="car_model">Modèle :</string>
+    <string name="car_fuel">Carburant :</string>
+    <string name="car_seat_numb">Places :</string>
+    <string name="car_plate">Plaque :</string>
+    <string name="car_price">Prix Jounalier :</string>
 </resources>

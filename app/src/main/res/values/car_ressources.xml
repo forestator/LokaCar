@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="car_types">
+        <item>Urbaine</item>
+        <item>4x4</item>
+        <item>Sportive</item>
+        <item>Familiale</item>
+        <item>Citadine</item>
+    </string-array>
+    <string-array name="car_fuels">
+        <item>Essence</item>
+        <item>Diesel</item>
+        <item>GPL</item>
+        <item>Électrique</item>
+        <item>Pédalo</item>
+    </string-array>
+</resources>

@@ -6,8 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ParkingActivity">
 
+    <Button
+        android:id="@+id/btnAddCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:text="@string/add_car"
+        android:onClick="redirNewCar"
+        android:drawableStart="@drawable/lokacar_ic_add_car_24"
+        android:drawablePadding="7dp"
+        android:layout_centerHorizontal="true"/>
+
     <LinearLayout
         android:id="@+id/linearSeekMarque"
+        android:layout_below="@+id/btnAddCar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
