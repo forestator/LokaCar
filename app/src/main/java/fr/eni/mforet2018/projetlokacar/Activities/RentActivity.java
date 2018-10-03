@@ -1,11 +1,16 @@
 package fr.eni.mforet2018.projetlokacar.Activities;
 
+import android.Manifest;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,6 +45,7 @@ public class RentActivity extends AppCompatActivity {
     private Calendar myCalendar = Calendar.getInstance();
     private LocationFile locationFile;
     private List<Client> searchedClientList;
+    private String selectedClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +56,7 @@ public class RentActivity extends AppCompatActivity {
         locationFile.setCarPlateNumber(currentCar.getPlateNumber());
         appDatabase = Connexion.getConnexion(this);
         TextView tv = findViewById(R.id.tvRentCarBrand);
-        tv.setText("Louer : "+currentCar.getBrand()+" -- "+currentCar.getPlateNumber());
+        tv.setText("Louer : " + currentCar.getBrand() + " -- " + currentCar.getPlateNumber());
         listView = findViewById(R.id.listViewClient);
         listView.setOnItemClickListener(new onClickClientListener());
     }
@@ -61,12 +67,23 @@ public class RentActivity extends AppCompatActivity {
         searchedClientList = appDatabase.clientDAO().searchClient(search);
         List<String> displayClientsNames = new ArrayList<>();
         //Affichage liste clients
-        for(Client client : searchedClientList){
-            displayClientsNames.add(client.getFirstName()+" "+client.getLastName());
+        for (Client client : searchedClientList) {
+            displayClientsNames.add(client.getFirstName() + " " + client.getLastName());
         }
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, displayClientsNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, displayClientsNames);
         listView.setAdapter(adapter);
     }
+
+    private class onClickClientListener implements android.widget.AdapterView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            TextView tv = findViewById(R.id.nomClient);
+            selectedClient = (String) listView.getItemAtPosition(i);
+            tv.setText(String.valueOf(listView.getItemAtPosition(i)));
+            locationFile.setClientId(searchedClientList.get(i).getClientId());
+        }
+    }
+
 
     public DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -76,8 +93,7 @@ public class RentActivity extends AppCompatActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            //TODO:A ameliorer +1 ? ???
-            locationFile.setStartOfRentDate(LocalDate.of(year,monthOfYear+1,dayOfMonth));
+            locationFile.setStartOfRentDate(myCalendar.getTime());
             updateLabel();
         }
 
@@ -87,22 +103,13 @@ public class RentActivity extends AppCompatActivity {
         String myFormat = "dd/MM/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
         TextView tv = findViewById(R.id.showDate);
-        tv.setText("Début de la location : "+sdf.format(myCalendar.getTime()));
+        tv.setText("Début de la location : " + sdf.format(myCalendar.getTime()));
     }
 
     public void datePicker(View view) {
         new DatePickerDialog(RentActivity.this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-    }
-
-    private class onClickClientListener implements android.widget.AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-          TextView tv = findViewById(R.id.nomClient);
-            tv.setText(String.valueOf(listView.getItemAtPosition(i)));
-            locationFile.setClientId(searchedClientList.get(i).getClientId());
-        }
     }
 
     public void confirmRent(View view) {
@@ -112,16 +119,51 @@ public class RentActivity extends AppCompatActivity {
             Toast.makeText(this, "Veuillez renseigner tous les champs", Toast.LENGTH_SHORT).show();
         } else {
             locationFile.setEndOfRentDate(locationFile.getStartOfRentDate());
-            locationFile.setEndOfRentDate(locationFile.getEndOfRentDate().plusDays(numberOfDays));
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(locationFile.getEndOfRentDate());
+            c.add(Calendar.DATE, numberOfDays);
+            locationFile.setEndOfRentDate(c.getTime());
             int totalCost = (int) (numberOfDays * currentCar.getDailyPrice());
             locationFile.setTotalCost(totalCost);
+            Log.i("FILE",locationFile.toString());
             appDatabase.locationFileDAO().insert(locationFile);
             Car carToUpdate = appDatabase.carDAO().getCarFromPlate(locationFile.getCarPlateNumber());
             carToUpdate.setRented(true);
             appDatabase.carDAO().update(carToUpdate);
             Toast.makeText(this, "Location enregistrée !", Toast.LENGTH_SHORT).show();
-            Intent searchIntent = new Intent(this, HomeActivity.class);
-            startActivity(searchIntent);
+            requestPermissions(new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.SEND_SMS}, 10124);
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        Log.i("REQUEST_SMS", String.valueOf(requestCode));
+        Log.i("REQUEST_SMS", String.valueOf(permissions.length));
+        Log.i("REQUEST_SMS", String.valueOf(grantResults.length));
+        Log.i("FILE",locationFile.toString());
+        //TODO: improve searchlcient[O]
+        Client currentClient = searchedClientList.get(0);
+        switch (requestCode) {
+            case 10124:
+                if (permissions.length == 2 && grantResults.length == 2 && currentClient.getPhoneNumber() != null) {
+                    Log.i("REQUEST_SMS", "J'ai le droit");
+                    Intent intentEnvoi = new Intent(this, SMSActivity.class);
+                    Bundle extras = new Bundle();
+                    extras.putParcelable("client", currentClient);
+                    extras.putParcelable("locationFile", locationFile);
+                    intentEnvoi.putExtras(extras);
+                    startActivity(intentEnvoi);
+                } else {
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    startActivity(intent);
+                }
+                break;
+            default:
+                Intent intent = new Intent(this, HomeActivity.class);
+                startActivity(intent);
+        }
+
+    }
+
 }

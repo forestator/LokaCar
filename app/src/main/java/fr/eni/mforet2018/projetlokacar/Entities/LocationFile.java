@@ -1,20 +1,18 @@
 package fr.eni.mforet2018.projetlokacar.Entities;
 
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
 import android.arch.persistence.room.TypeConverters;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.io.File;
-import java.time.LocalDate;
+import java.util.Date;
 
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
-
-import static android.arch.persistence.room.ForeignKey.CASCADE;
 
 @Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
         // TODO: gérer les foreignKeys
@@ -37,38 +35,43 @@ public class LocationFile implements Parcelable {
     private File picturesBeforeRent;
     @Ignore
     private File picturesAfterRent;
-
     // TODO: penser à rajouter cet attribut dans les indexes afin d'avoir des fichiers de loc uniques
-    @TypeConverters({Converters.class})
-    @Ignore
-    private LocalDate startOfRentDate;
-    @TypeConverters({Converters.class})
-    @Ignore
-    private LocalDate endOfRentDate;
+    private Date startOfRentDate;
+    private Date endOfRentDate;
     private int clientId;
     private String carPlateNumber;
 
     public LocationFile() {
     }
 
-    public LocationFile(int id, float totalCost, File picturesBeforeRent, File picturesAfterRent, LocalDate startOfRentDate, LocalDate endOfRentDate) {
+    public LocationFile(int id, float totalCost, File picturesBeforeRent, File picturesAfterRent, Date startOfRentDate, Date endOfRentDate, int clientId, String carPlateNumber) {
         this.id = id;
         this.totalCost = totalCost;
         this.picturesBeforeRent = picturesBeforeRent;
         this.picturesAfterRent = picturesAfterRent;
         this.startOfRentDate = startOfRentDate;
         this.endOfRentDate = endOfRentDate;
+        this.clientId = clientId;
+        this.carPlateNumber = carPlateNumber;
     }
 
     protected LocationFile(Parcel in) {
         id = in.readInt();
         totalCost = in.readFloat();
+        clientId = in.readInt();
+        carPlateNumber = in.readString();
+        startOfRentDate = new Date(in.readLong());
+        endOfRentDate = new Date(in.readLong());
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeFloat(totalCost);
+        dest.writeInt(clientId);
+        dest.writeString(carPlateNumber);
+        dest.writeLong(startOfRentDate.getTime());
+        dest.writeLong(endOfRentDate.getTime());
     }
 
     @Override
@@ -120,19 +123,19 @@ public class LocationFile implements Parcelable {
         this.picturesAfterRent = picturesAfterRent;
     }
 
-    public LocalDate getStartOfRentDate() {
+    public Date getStartOfRentDate() {
         return startOfRentDate;
     }
 
-    public void setStartOfRentDate(LocalDate startOfRentDate) {
+    public void setStartOfRentDate(Date startOfRentDate) {
         this.startOfRentDate = startOfRentDate;
     }
 
-    public LocalDate getEndOfRentDate() {
+    public Date getEndOfRentDate() {
         return endOfRentDate;
     }
 
-    public void setEndOfRentDate(LocalDate endOfRentDate) {
+    public void setEndOfRentDate(Date endOfRentDate) {
         this.endOfRentDate = endOfRentDate;
     }
 
@@ -161,6 +164,8 @@ public class LocationFile implements Parcelable {
                 ", picturesAfterRent=" + picturesAfterRent +
                 ", startOfRentDate=" + startOfRentDate +
                 ", endOfRentDate=" + endOfRentDate +
+                ", clientId=" + clientId +
+                ", carPlateNumber='" + carPlateNumber + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,6 @@
 package fr.eni.mforet2018.projetlokacar.Activities;
 
+import android.Manifest;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         //TODO: Demande d'autorisations pour accès camera ......
+        requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_PHONE_STATE}, 10125);
     }
 
     public void redirRentCar(View view) {

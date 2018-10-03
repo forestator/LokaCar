@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 
 import fr.eni.mforet2018.projetlokacar.Entities.Agency;
 import fr.eni.mforet2018.projetlokacar.Entities.Car;
@@ -34,7 +36,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         db.agencyDAO().deleteAll();
         db.carDAO().deleteAll();
         db.clientDAO().deleteAll();
-        db.agencyDAO().deleteAll();
+        db.locationFileDAO().deleteAll();
 
         // Create Agency;
         Agency agency = new Agency();
@@ -63,6 +65,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         jean.setFirstName("Jean-Claude");
         jean.setLastName("Dus");
         jean.setMailAddress("55, rue des tombeurs 33000 Bordeaux");
+        jean.setPhoneNumber("0681285757");
         jean.setClientId((int) db.clientDAO().insert(jean));
 
         // Create clients;
@@ -108,8 +111,14 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         LocationFile loc = new LocationFile();
         loc.setClientId(pierre.getClientId());
         loc.setCarPlateNumber(pijot.getPlateNumber());
-        loc.setStartOfRentDate(LocalDate.of(2018, 10,01));
-        loc.setEndOfRentDate(LocalDate.of(2018, 10,06));
+        loc.setStartOfRentDate(new Date());
+
+        //Ajout de 5 jours
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        c.add(Calendar.DATE, 5); // Adding 5 days
+
+        loc.setEndOfRentDate(c.getTime());
         loc.setTotalCost(pijot.getDailyPrice()*5);
 
         loc.setId((int) db.locationFileDAO().insert(loc));

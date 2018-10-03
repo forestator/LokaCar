@@ -60,4 +60,6 @@
     <string name="car_seat_numb">Places :</string>
     <string name="car_plate">Plaque :</string>
     <string name="car_price">Prix Jounalier :</string>
+    <string name="message">Message :</string>
+    <string name="contenu_du_message">contenu du message</string>
 </resources>
