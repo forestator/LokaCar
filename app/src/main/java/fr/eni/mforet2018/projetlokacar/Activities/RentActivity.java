@@ -45,7 +45,6 @@ public class RentActivity extends AppCompatActivity {
     private Calendar myCalendar = Calendar.getInstance();
     private LocationFile locationFile;
     private List<Client> searchedClientList;
-    private String selectedClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,8 @@ public class RentActivity extends AppCompatActivity {
         locationFile.setCarPlateNumber(currentCar.getPlateNumber());
         appDatabase = Connexion.getConnexion(this);
         TextView tv = findViewById(R.id.tvRentCarBrand);
-        tv.setText("Louer : " + currentCar.getBrand() + " -- " + currentCar.getPlateNumber());
+        String textLocation = "Louer : " + currentCar.getBrand() + " -- " + currentCar.getPlateNumber();
+        tv.setText(textLocation);
         listView = findViewById(R.id.listViewClient);
         listView.setOnItemClickListener(new onClickClientListener());
     }
@@ -74,11 +74,14 @@ public class RentActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    public void takePictureForRent(View view) {
+        //TODO
+    }
+
     private class onClickClientListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             TextView tv = findViewById(R.id.nomClient);
-            selectedClient = (String) listView.getItemAtPosition(i);
             tv.setText(String.valueOf(listView.getItemAtPosition(i)));
             locationFile.setClientId(searchedClientList.get(i).getClientId());
         }

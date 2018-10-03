@@ -28,4 +28,7 @@ public interface ClientDAO extends GenericDAO<Client> {
 
     @Query("Select COUNT(*) from client")
     int getNumberOfClients();
+
+    @Query("Select * from client WHERE clientId LIKE :clientId ")
+    Client searchClientById(int clientId);
 }

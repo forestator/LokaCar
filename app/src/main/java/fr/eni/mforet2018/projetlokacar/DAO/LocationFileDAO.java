@@ -17,4 +17,7 @@ public interface LocationFileDAO extends GenericDAO<LocationFile>{
 
     @Query(SELECT_ALL)
     List<LocationFile> getAll();
+
+    @Query("SELECT * FROM locationFile WHERE carPlateNumber LIKE :plateNumber")
+    LocationFile getLocationFileByCarPlateNumber(String plateNumber);
 }

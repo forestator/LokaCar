@@ -139,14 +139,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="takePictureForRent"
+                android:text="Prendre Photos avant la location"
+                android:layout_weight="0.5"/>
 
             <Button
                 android:id="@+id/validBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="confirmRent"
-                android:text="Valider la sélection" />
+                android:text="Valider la sélection"
+                android:layout_weight="0.5"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
