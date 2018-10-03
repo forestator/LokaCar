@@ -30,4 +30,7 @@ public interface CarDAO extends GenericDAO<Car> {
 
     @Query(SELECT_CAR_BY_PLATENUMBER)
     Car getCarFromPlate(String carPlateNumber);
+
+    @Query("SELECT COUNT(*) from car")
+    int getNumberOfCars();
 }

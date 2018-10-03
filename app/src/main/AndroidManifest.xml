@@ -74,19 +74,19 @@
         <activity android:name=".Activities.CarDetailsActivity" />
         <activity
             android:name=".Activities.RentActivity"
-            android:parentActivityName=".Activities.CarDetailsActivity">
+            android:parentActivityName=".Activities.HomeActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.CarDetailsActivity" />
+                android:value=".Activities.HomeActivity" />
         </activity>
         <activity
             android:name=".Activities.ReturnActivity"
-            android:parentActivityName=".Activities.CarDetailsActivity">
+            android:parentActivityName=".Activities.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.CarDetailsActivity" />
+                android:value=".Activities.HomeActivity" />
         </activity>
         <activity
             android:name=".Activities.ClientDetailsActivity"

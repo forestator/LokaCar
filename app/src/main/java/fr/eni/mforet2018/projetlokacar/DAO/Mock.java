@@ -110,6 +110,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         loc.setCarPlateNumber(pijot.getPlateNumber());
         loc.setStartOfRentDate(LocalDate.of(2018, 10,01));
         loc.setEndOfRentDate(LocalDate.of(2018, 10,06));
+        loc.setTotalCost(pijot.getDailyPrice()*5);
 
         loc.setId((int) db.locationFileDAO().insert(loc));
 

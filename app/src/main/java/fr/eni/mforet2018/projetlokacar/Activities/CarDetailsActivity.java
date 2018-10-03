@@ -21,6 +21,10 @@ public class CarDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car_details);
         currentCar = this.getIntent().getParcelableExtra("car");
+        initView();
+    }
+
+    private void initView() {
         TextView tv = findViewById(R.id.carBrand);
         tv.setText(currentCar.getBrand());
         tv = findViewById(R.id.carModel);
@@ -46,12 +50,7 @@ public class CarDetailsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ToggleButton rentToggle = findViewById(R.id.swRent);
-        if (currentCar.isRented()){
-            rentToggle.setChecked(true);
-        } else {
-            rentToggle.setChecked(false);
-        }
+        initView();
     }
 
     public void rentOrUnrentCar(View view) {

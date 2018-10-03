@@ -32,4 +32,9 @@
     <string name="louer_marque_marque">Louer : marque -- marque</string>
     <string name="v_hicule">Véhicule:</string>
     <string name="choisir_une_date">choisir une date de début de location</string>
+    <string name="gestion_de_l_agence">Gestion de l\'agence</string>
+    <string name="nombre_de_clients">Nombre de clients :</string>
+    <string name="nombre_de_voitures_dans_le_parc">Nombre de voitures dans le parc :</string>
+    <string name="nombre_de_voitures_lou_es">Nombre de voitures louées :</string>
+    <string name="chiffre_d_affaire">Chiffre d\'affaire :</string>
 </resources>
