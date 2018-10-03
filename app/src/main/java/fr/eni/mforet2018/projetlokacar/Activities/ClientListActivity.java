@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.mforet2018.projetlokacar.Adapters.ClickClientListener;
@@ -22,6 +26,7 @@ public class ClientListActivity extends AppCompatActivity implements ClickClient
     private List<Client> clients;
     private AppDatabase appDatabase;
     private RecyclerView recyclerView;
+    private List<Client> searchedClientList;
 
 
     @Override
@@ -57,6 +62,20 @@ public class ClientListActivity extends AppCompatActivity implements ClickClient
         Toast.makeText(this, "Nouveau Client", Toast.LENGTH_SHORT).show();
         Intent newClientIntent = new Intent(this, ClientAddActivity.class);
         startActivity(newClientIntent);
+    }
+
+    public void onClickSearchClient(View view) {
+        EditText editSearchClient = findViewById(R.id.seekForClient);
+        String search = editSearchClient.getText().toString();
+        searchedClientList = appDatabase.clientDAO().searchClient(search);
+        List<String> displayClientsNames = new ArrayList<>();
+        //Affichage liste clients
+        for(Client client : searchedClientList){
+            displayClientsNames.add(client.getFirstName()+" "+client.getLastName());
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, displayClientsNames);
+        ListView listView = findViewById(R.id.listViewClient);
+        listView.setAdapter(adapter);
     }
 
     private class AsyncGetClients extends AsyncTask<Void, Void, Void> {

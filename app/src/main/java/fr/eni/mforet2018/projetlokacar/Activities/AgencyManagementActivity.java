@@ -25,7 +25,6 @@ public class AgencyManagementActivity extends AppCompatActivity {
         appDatabase = Connexion.getConnexion(this);
         List<LocationFile> llf = appDatabase.locationFileDAO().getAll();
         for (LocationFile lf : llf) {
-            Toast.makeText(this, "bonsoir"+String.valueOf(lf.getTotalCost()), Toast.LENGTH_SHORT).show();
             turnover = turnover + lf.getTotalCost();
         }
         int numberOfClients = appDatabase.clientDAO().getNumberOfClients();
