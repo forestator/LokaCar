@@ -17,6 +17,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         //TODO: Demande d'autorisations pour accès camera ......
         requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_PHONE_STATE}, 10125);
+        requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.CAMERA}, 10128);
+        requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 10129);
+        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 10130);
     }
 
     public void redirRentCar(View view) {

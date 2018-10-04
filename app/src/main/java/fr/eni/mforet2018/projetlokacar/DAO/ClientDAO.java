@@ -23,7 +23,7 @@ public interface ClientDAO extends GenericDAO<Client> {
     @Query(SELECT_ALL)
     List<Client> getAll();
 
-    @Query("Select * from client WHERE lastName LIKE :search")
+    @Query("Select * from client WHERE lastName LIKE '%'||:search||'%' OR firstName LIKE '%'||:search||'%'")
     List<Client> searchClient(String search);
 
     @Query("Select COUNT(*) from client")

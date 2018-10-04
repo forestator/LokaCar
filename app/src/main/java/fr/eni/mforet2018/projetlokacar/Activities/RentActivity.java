@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +22,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -39,6 +46,7 @@ import fr.eni.mforet2018.projetlokacar.R;
 
 public class RentActivity extends AppCompatActivity {
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
     private Car currentCar;
     private ListView listView;
     private AppDatabase appDatabase;
@@ -75,7 +83,46 @@ public class RentActivity extends AppCompatActivity {
     }
 
     public void takePictureForRent(View view) {
-        //TODO
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            Toast.makeText(this, "Photo enregistrée", Toast.LENGTH_SHORT).show();
+/*
+            //create a file to write bitmap data
+            File f = new File(this.getCacheDir(), "PHOTO1");
+            try {
+                f.createNewFile();
+            //Convert bitmap to byte array
+            Bitmap bitmap = imageBitmap;
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
+            byte[] bitmapdata = bos.toByteArray();
+
+            //write the bytes in file
+            FileOutputStream fos = null;
+                fos = new FileOutputStream(f);
+                fos.write(bitmapdata);
+                fos.flush();
+                fos.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Toast.makeText(this, f.getAbsolutePath().toString(), Toast.LENGTH_SHORT).show();
+*/
+        }
+
     }
 
     private class onClickClientListener implements android.widget.AdapterView.OnItemClickListener {
@@ -129,7 +176,7 @@ public class RentActivity extends AppCompatActivity {
             locationFile.setEndOfRentDate(c.getTime());
             int totalCost = (int) (numberOfDays * currentCar.getDailyPrice());
             locationFile.setTotalCost(totalCost);
-            Log.i("FILE",locationFile.toString());
+            Log.i("FILE", locationFile.toString());
             appDatabase.locationFileDAO().insert(locationFile);
             Car carToUpdate = appDatabase.carDAO().getCarFromPlate(locationFile.getCarPlateNumber());
             carToUpdate.setRented(true);
@@ -144,7 +191,7 @@ public class RentActivity extends AppCompatActivity {
         Log.i("REQUEST_SMS", String.valueOf(requestCode));
         Log.i("REQUEST_SMS", String.valueOf(permissions.length));
         Log.i("REQUEST_SMS", String.valueOf(grantResults.length));
-        Log.i("FILE",locationFile.toString());
+        Log.i("FILE", locationFile.toString());
         //TODO: improve searchlcient[O]
         Client currentClient = searchedClientList.get(0);
         switch (requestCode) {
@@ -161,6 +208,14 @@ public class RentActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }
+            case 10128:
+                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
+                break;
+            case 10129:
+                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
+                break;
+            case 10130:
+                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Intent intent = new Intent(this, HomeActivity.class);
