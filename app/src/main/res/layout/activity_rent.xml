@@ -148,6 +148,11 @@
                 android:padding="5dp"
                 android:text="@string/take_picture" />
 
+            <ImageView
+                android:id="@+id/ivPhotoPrise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <Button
                 android:id="@+id/validBtn"
                 android:layout_width="match_parent"

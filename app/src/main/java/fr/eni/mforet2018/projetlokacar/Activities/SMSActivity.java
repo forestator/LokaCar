@@ -27,7 +27,7 @@ public class SMSActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         this.client = extras.getParcelable("client");
         Log.i("ALED", client.toString());
-        this.locationFile = extras.getParcelable("locationFile");
+        this.locationFile = extras.getParcelable("currentLocFile");
         Log.i("ALED", locationFile.toString());
 
         String myFormat = "dd/MM/yy";

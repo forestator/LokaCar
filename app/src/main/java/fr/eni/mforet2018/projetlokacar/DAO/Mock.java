@@ -85,6 +85,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         pijot.setModel("106");
         pijot.setDailyPrice(25);
         pijot.setType("citadine");
+        pijot.setPicture("https://firebasestorage.googleapis.com/v0/b/projetlokacar.appspot.com/o/t%C3%A9l%C3%A9chargement.jpg?alt=media&token=dc50fbfb-999c-4ad6-814a-c3e3834ac00d");
         db.carDAO().insert(pijot);
 
         Car golf = new Car();
@@ -95,6 +96,7 @@ public class Mock extends AsyncTask<Void, Void, Void> {
         golf.setModel("Golf");
         golf.setDailyPrice(50);
         golf.setType("urbaine");
+        golf.setPicture("https://firebasestorage.googleapis.com/v0/b/projetlokacar.appspot.com/o/2016-volkswagen-golf-highline.png?alt=media&token=5ccadc76-a3c4-4e60-abb7-0eb44e759247");
         db.carDAO().insert(golf);
 
         golf.setPlateNumber("FV-556-GT");

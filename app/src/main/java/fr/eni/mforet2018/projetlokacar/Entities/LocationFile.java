@@ -17,26 +17,14 @@ import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
-@Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
-        // TODO: gérer les foreignKeys
-        foreignKeys = {
-                @ForeignKey(entity = Client.class,
-                        parentColumns = "clientId",
-                        childColumns = "clientId"),
-                @ForeignKey(entity = Car.class,
-                        parentColumns = "plateNumber",
-                        childColumns = "carPlateNumber")
-        }*/)
+@Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)})
 public class LocationFile implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
     private float totalCost;
-    @Ignore
-    private File picturesBeforeRent;
-    @Ignore
-    private File picturesAfterRent;
-    // TODO: penser à rajouter cet attribut dans les indexes afin d'avoir des fichiers de loc uniques
+    private String picturesBeforeRent;
+    private String picturesAfterRent;
     private Date startOfRentDate;
     private Date endOfRentDate;
     private int clientId;
@@ -45,7 +33,7 @@ public class LocationFile implements Parcelable {
     public LocationFile() {
     }
 
-    public LocationFile(int id, float totalCost, File picturesBeforeRent, File picturesAfterRent, Date startOfRentDate, Date endOfRentDate, int clientId, String carPlateNumber) {
+    public LocationFile(int id, float totalCost, String picturesBeforeRent, String picturesAfterRent, Date startOfRentDate, Date endOfRentDate, int clientId, String carPlateNumber) {
         this.id = id;
         this.totalCost = totalCost;
         this.picturesBeforeRent = picturesBeforeRent;
@@ -59,6 +47,8 @@ public class LocationFile implements Parcelable {
     protected LocationFile(Parcel in) {
         id = in.readInt();
         totalCost = in.readFloat();
+        picturesBeforeRent = in.readString();
+        picturesAfterRent = in.readString();
         clientId = in.readInt();
         carPlateNumber = in.readString();
         startOfRentDate = new Date(in.readLong());
@@ -69,6 +59,8 @@ public class LocationFile implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
         dest.writeFloat(totalCost);
+        dest.writeString(picturesBeforeRent);
+        dest.writeString(picturesAfterRent);
         dest.writeInt(clientId);
         dest.writeString(carPlateNumber);
         dest.writeLong(startOfRentDate.getTime());
@@ -92,6 +84,20 @@ public class LocationFile implements Parcelable {
         }
     };
 
+    @Override
+    public String toString() {
+        return "LocationFile{" +
+                "id=" + id +
+                ", totalCost=" + totalCost +
+                ", picturesBeforeRent='" + picturesBeforeRent + '\'' +
+                ", picturesAfterRent='" + picturesAfterRent + '\'' +
+                ", startOfRentDate=" + startOfRentDate +
+                ", endOfRentDate=" + endOfRentDate +
+                ", clientId=" + clientId +
+                ", carPlateNumber='" + carPlateNumber + '\'' +
+                '}';
+    }
+
     public int getId() {
         return id;
     }
@@ -108,19 +114,19 @@ public class LocationFile implements Parcelable {
         this.totalCost = totalCost;
     }
 
-    public File getPicturesBeforeRent() {
+    public String getPicturesBeforeRent() {
         return picturesBeforeRent;
     }
 
-    public void setPicturesBeforeRent(File picturesBeforeRent) {
+    public void setPicturesBeforeRent(String picturesBeforeRent) {
         this.picturesBeforeRent = picturesBeforeRent;
     }
 
-    public File getPicturesAfterRent() {
+    public String getPicturesAfterRent() {
         return picturesAfterRent;
     }
 
-    public void setPicturesAfterRent(File picturesAfterRent) {
+    public void setPicturesAfterRent(String picturesAfterRent) {
         this.picturesAfterRent = picturesAfterRent;
     }
 
@@ -154,19 +160,5 @@ public class LocationFile implements Parcelable {
 
     public void setCarPlateNumber(String carPlateNumber) {
         this.carPlateNumber = carPlateNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "LocationFile{" +
-                "id=" + id +
-                ", totalCost=" + totalCost +
-                ", picturesBeforeRent=" + picturesBeforeRent +
-                ", picturesAfterRent=" + picturesAfterRent +
-                ", startOfRentDate=" + startOfRentDate +
-                ", endOfRentDate=" + endOfRentDate +
-                ", clientId=" + clientId +
-                ", carPlateNumber='" + carPlateNumber + '\'' +
-                '}';
     }
 }

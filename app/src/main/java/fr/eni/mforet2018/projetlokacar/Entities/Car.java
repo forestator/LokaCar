@@ -25,13 +25,12 @@ public class Car implements Parcelable {
     private String model;
     private String fuel;
     private int seatsNumber;
-    @Ignore
-    private File picture;
+    private String picture;
 
     public Car() {
     }
 
-    public Car(@NonNull String plateNumber, float dailyPrice, boolean isRented, String type, String brand, String model, String fuel, int seatsNumber, File picture) {
+    public Car(@NonNull String plateNumber, float dailyPrice, boolean isRented, String type, String brand, String model, String fuel, int seatsNumber, String picture) {
         this.plateNumber = plateNumber;
         this.dailyPrice = dailyPrice;
         this.isRented = isRented;
@@ -52,6 +51,25 @@ public class Car implements Parcelable {
         model = in.readString();
         fuel = in.readString();
         seatsNumber = in.readInt();
+        picture = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(plateNumber);
+        dest.writeFloat(dailyPrice);
+        dest.writeByte((byte) (isRented ? 1 : 0));
+        dest.writeString(type);
+        dest.writeString(brand);
+        dest.writeString(model);
+        dest.writeString(fuel);
+        dest.writeInt(seatsNumber);
+        dest.writeString(picture);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Car> CREATOR = new Creator<Car>() {
@@ -65,14 +83,6 @@ public class Car implements Parcelable {
             return new Car[size];
         }
     };
-
-    public int getSeatsNumber() {
-        return seatsNumber;
-    }
-
-    public void setSeatsNumber(int seatsNumber) {
-        this.seatsNumber = seatsNumber;
-    }
 
     @NonNull
     public String getPlateNumber() {
@@ -123,20 +133,28 @@ public class Car implements Parcelable {
         this.model = model;
     }
 
-    public File getPicture() {
-        return picture;
-    }
-
-    public void setPicture(File picture) {
-        this.picture = picture;
-    }
-
     public String getFuel() {
         return fuel;
     }
 
     public void setFuel(String fuel) {
         this.fuel = fuel;
+    }
+
+    public int getSeatsNumber() {
+        return seatsNumber;
+    }
+
+    public void setSeatsNumber(int seatsNumber) {
+        this.seatsNumber = seatsNumber;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     @Override
@@ -148,24 +166,9 @@ public class Car implements Parcelable {
                 ", type='" + type + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
-                ", picture=" + picture +
+                ", fuel='" + fuel + '\'' +
+                ", seatsNumber=" + seatsNumber +
+                ", picture='" + picture + '\'' +
                 '}';
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(plateNumber);
-        parcel.writeFloat(dailyPrice);
-        parcel.writeByte((byte) (isRented ? 1 : 0));
-        parcel.writeString(type);
-        parcel.writeString(brand);
-        parcel.writeString(model);
-        parcel.writeString(fuel);
-        parcel.writeInt(seatsNumber);
     }
 }

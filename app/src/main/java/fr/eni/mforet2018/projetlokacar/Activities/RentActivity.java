@@ -2,38 +2,41 @@ package fr.eni.mforet2018.projetlokacar.Activities;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.DialogFragment;
+import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DateFormat;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,16 +54,20 @@ public class RentActivity extends AppCompatActivity {
     private ListView listView;
     private AppDatabase appDatabase;
     private Calendar myCalendar = Calendar.getInstance();
-    private LocationFile locationFile;
+    private LocationFile currentLocFile;
     private List<Client> searchedClientList;
+    private StorageReference stockageCloud;
+    Uri downloadUrl=null;
+    String localImageFilePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
-        locationFile = new LocationFile();
+        this.stockageCloud = FirebaseStorage.getInstance().getReference();
+        currentLocFile = new LocationFile();
         currentCar = this.getIntent().getParcelableExtra("car");
-        locationFile.setCarPlateNumber(currentCar.getPlateNumber());
+        currentLocFile.setCarPlateNumber(currentCar.getPlateNumber());
         appDatabase = Connexion.getConnexion(this);
         TextView tv = findViewById(R.id.tvRentCarBrand);
         String textLocation = "Louer : " + currentCar.getBrand() + " -- " + currentCar.getPlateNumber();
@@ -82,55 +89,12 @@ public class RentActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
-    public void takePictureForRent(View view) {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-
-            Toast.makeText(this, "Photo enregistrée", Toast.LENGTH_SHORT).show();
-/*
-            //create a file to write bitmap data
-            File f = new File(this.getCacheDir(), "PHOTO1");
-            try {
-                f.createNewFile();
-            //Convert bitmap to byte array
-            Bitmap bitmap = imageBitmap;
-            ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, bos);
-            byte[] bitmapdata = bos.toByteArray();
-
-            //write the bytes in file
-            FileOutputStream fos = null;
-                fos = new FileOutputStream(f);
-                fos.write(bitmapdata);
-                fos.flush();
-                fos.close();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Toast.makeText(this, f.getAbsolutePath().toString(), Toast.LENGTH_SHORT).show();
-*/
-        }
-
-    }
-
     private class onClickClientListener implements android.widget.AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             TextView tv = findViewById(R.id.nomClient);
             tv.setText(String.valueOf(listView.getItemAtPosition(i)));
-            locationFile.setClientId(searchedClientList.get(i).getClientId());
+            currentLocFile.setClientId(searchedClientList.get(i).getClientId());
         }
     }
 
@@ -143,7 +107,6 @@ public class RentActivity extends AppCompatActivity {
             myCalendar.set(Calendar.YEAR, year);
             myCalendar.set(Calendar.MONTH, monthOfYear);
             myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-            locationFile.setStartOfRentDate(myCalendar.getTime());
             updateLabel();
         }
 
@@ -165,20 +128,20 @@ public class RentActivity extends AppCompatActivity {
     public void confirmRent(View view) {
         EditText et = findViewById(R.id.numberOfDays);
         int numberOfDays = Integer.parseInt(String.valueOf(et.getText()));
-        if (numberOfDays == 0 || locationFile.getStartOfRentDate() == null || locationFile.getClientId() == 0) {
+        currentLocFile.setStartOfRentDate(myCalendar.getTime());
+        if (numberOfDays == 0 || currentLocFile.getStartOfRentDate() == null || currentLocFile.getClientId() == 0) {
             Toast.makeText(this, "Veuillez renseigner tous les champs", Toast.LENGTH_SHORT).show();
         } else {
-            locationFile.setEndOfRentDate(locationFile.getStartOfRentDate());
-
+            currentLocFile.setEndOfRentDate(currentLocFile.getStartOfRentDate());
             Calendar c = Calendar.getInstance();
-            c.setTime(locationFile.getEndOfRentDate());
+            c.setTime(currentLocFile.getEndOfRentDate());
             c.add(Calendar.DATE, numberOfDays);
-            locationFile.setEndOfRentDate(c.getTime());
+            currentLocFile.setEndOfRentDate(c.getTime());
             int totalCost = (int) (numberOfDays * currentCar.getDailyPrice());
-            locationFile.setTotalCost(totalCost);
-            Log.i("FILE", locationFile.toString());
-            appDatabase.locationFileDAO().insert(locationFile);
-            Car carToUpdate = appDatabase.carDAO().getCarFromPlate(locationFile.getCarPlateNumber());
+            currentLocFile.setTotalCost(totalCost);
+            Log.i("FILE", currentLocFile.toString());
+            appDatabase.locationFileDAO().insert(currentLocFile);
+            Car carToUpdate = appDatabase.carDAO().getCarFromPlate(currentLocFile.getCarPlateNumber());
             carToUpdate.setRented(true);
             appDatabase.carDAO().update(carToUpdate);
             Toast.makeText(this, "Location enregistrée !", Toast.LENGTH_SHORT).show();
@@ -191,7 +154,7 @@ public class RentActivity extends AppCompatActivity {
         Log.i("REQUEST_SMS", String.valueOf(requestCode));
         Log.i("REQUEST_SMS", String.valueOf(permissions.length));
         Log.i("REQUEST_SMS", String.valueOf(grantResults.length));
-        Log.i("FILE", locationFile.toString());
+        Log.i("FILE", currentLocFile.toString());
         //TODO: improve searchlcient[O]
         Client currentClient = searchedClientList.get(0);
         switch (requestCode) {
@@ -201,22 +164,13 @@ public class RentActivity extends AppCompatActivity {
                     Intent intentEnvoi = new Intent(this, SMSActivity.class);
                     Bundle extras = new Bundle();
                     extras.putParcelable("client", currentClient);
-                    extras.putParcelable("locationFile", locationFile);
+                    extras.putParcelable("currentLocFile", currentLocFile);
                     intentEnvoi.putExtras(extras);
                     startActivity(intentEnvoi);
                 } else {
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }
-                break;
-            case 10128:
-                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
-                break;
-            case 10129:
-                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
-                break;
-            case 10130:
-                Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 Intent intent = new Intent(this, HomeActivity.class);
@@ -225,4 +179,72 @@ public class RentActivity extends AppCompatActivity {
 
     }
 
+    public void takePictureForRent(View view){
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            File photo = createImageFile();
+            Uri uriToUpload = FileProvider.getUriForFile(this,
+                    "fr.eni.projetphoto.provider",
+                    photo);
+            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, uriToUpload);
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode)
+        {
+            case REQUEST_IMAGE_CAPTURE:
+                Bitmap imageBitmap = BitmapFactory.decodeFile(this.localImageFilePath);
+                ImageView iv = findViewById(R.id.ivPhotoPrise);
+                iv.setImageBitmap(imageBitmap);
+                uploadImage();
+                break;
+            default:
+                super.onActivityResult(requestCode,resultCode,data);
+        }
+    }
+
+    public void uploadImage() {
+        StorageReference cloudRef = this.stockageCloud.child(Paths.get(localImageFilePath).getFileName().toString());
+        cloudRef.putFile(Uri.fromFile(new File(localImageFilePath)))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        downloadUrl = taskSnapshot.getDownloadUrl();
+                        currentLocFile.setPicturesBeforeRent(downloadUrl.toString());
+                        Log.i("THIERRY", downloadUrl.toString());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        // ...
+                    }
+                });
+    }
+
+    private File createImageFile()  {
+        String timeStamp =
+                new SimpleDateFormat("yyyyMMdd_HHmmss",
+                        Locale.getDefault()).format(new Date());
+        String imageFileName = "IMG_" + timeStamp + "_";
+        File storageDir =
+                getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = null;
+        try {
+            image = File.createTempFile(
+                    imageFileName,  /* prefix */
+                    ".jpg",         /* suffix */
+                    storageDir      /* directory */
+            );
+            localImageFilePath = image.getAbsolutePath();
+            return image;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
 }

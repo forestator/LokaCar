@@ -67,4 +67,5 @@
     <string name="take_picture">Prendre Photos avant la location</string>
     <string name="nb_loc_date">Jours de location :</string>
     <string name="validate_loc">Valider la Location</string>
+    <string name="photos">Prendre photos</string>
 </resources>
