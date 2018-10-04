@@ -50,6 +50,9 @@ public class CarAddActivity extends AppCompatActivity {
         EditText edCarBrand = findViewById(R.id.edNCaBrand);
         String carBrand = edCarBrand.getText().toString();
 
+        EditText edCarModel = findViewById(R.id.edNCaModel);
+        String carModel = edCarModel.getText().toString();
+
         EditText edCarSeatsNb = findViewById(R.id.edNCaSeatsNb);
         int carSeatsNb = Integer.parseInt(edCarSeatsNb.getText().toString());
 
@@ -69,6 +72,7 @@ public class CarAddActivity extends AppCompatActivity {
         newCar.setFuel(carFuel);
         newCar.setPlateNumber(carPlate);
         newCar.setSeatsNumber(carSeatsNb);
+        newCar.setModel(carModel);
         newCar.setRented(false);
 
         appDatabase.carDAO().insert(newCar);

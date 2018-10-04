@@ -2,82 +2,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:orientation="horizontal"
+        android:layout_marginHorizontal="5dp"
         android:layout_weight="1"
-        android:layout_marginHorizontal="5dp">
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
+            android:background="@color/colorBtn"
             android:drawableRight="@drawable/lokacar_car_rent_75"
-            android:text="@string/rent_car"
             android:onClick="redirRentCar"
-            />
+            android:padding="5dp"
+            android:text="@string/rent_car" />
 
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="@string/return_car"
+            android:background="@color/colorBtn"
             android:drawableLeft="@drawable/lokacar_car_return_75"
-            android:onClick="redirReturnCar"/>
+            android:onClick="redirReturnCar"
+            android:padding="5dp"
+            android:text="@string/return_car" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:orientation="horizontal"
+        android:layout_marginHorizontal="5dp"
         android:layout_weight="1"
-        android:layout_marginHorizontal="5dp">
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="@string/client_gestion"
+            android:background="@color/colorBtn"
             android:drawableRight="@drawable/lokacar_client_75"
-            android:onClick="redirClientMgmt"/>
+            android:onClick="redirClientMgmt"
+            android:padding="5dp"
+            android:text="@string/client_gestion" />
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="@string/stats"
+            android:background="@color/colorBtn"
             android:drawableLeft="@drawable/lokacar_stats_75"
-            android:onClick="redirAgencyMgmt"/>
+            android:onClick="redirAgencyMgmt"
+            android:padding="5dp"
+            android:text="@string/stats" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dip"
-        android:orientation="horizontal"
+        android:layout_marginHorizontal="5dp"
         android:layout_weight="1"
-        android:layout_marginHorizontal="5dp">
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="@string/parking"
+            android:background="@color/colorBtn"
             android:drawableRight="@drawable/lokacar_parking_75"
             android:onClick="redirAllParking"
-            />
+            android:padding="5dp"
+            android:text="@string/parking" />
 
         <Button
             android:layout_width="0dip"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="@string/current_rents"
+            android:background="@color/colorBtn"
             android:drawableLeft="@drawable/lokacar_locations_75"
             android:onClick="redirSearch"
-            />
+            android:padding="5dp"
+            android:text="@string/current_rents" />
 
     </LinearLayout>
 </LinearLayout>

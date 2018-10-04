@@ -10,20 +10,22 @@
         android:id="@+id/btnAddCar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:text="@string/add_car"
-        android:onClick="redirNewCar"
+        android:background="@color/colorBtn"
         android:drawableStart="@drawable/lokacar_ic_add_car_24"
         android:drawablePadding="7dp"
-        android:layout_centerHorizontal="true"/>
+        android:onClick="redirNewCar"
+        android:padding="5dp"
+        android:text="@string/add_car" />
 
     <LinearLayout
         android:id="@+id/linearSeekMarque"
-        android:layout_below="@+id/btnAddCar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/btnAddCar"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <EditText
@@ -37,7 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
+            android:background="@color/colorBtn"
             android:onClick="SearchByMarque"
+            android:padding="5dp"
             android:text="@string/recherche" />
     </LinearLayout>
 
@@ -46,8 +50,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearSeekMarque"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <EditText
@@ -61,7 +65,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
+            android:background="@color/colorBtn"
             android:onClick="onClickSearchFuel"
+            android:padding="5dp"
             android:text="@string/recherche" />
     </LinearLayout>
 
@@ -70,8 +76,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearseekFuel"
-        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <EditText
@@ -85,15 +91,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
+            android:background="@color/colorBtn"
             android:onClick="onClickSearchType"
+            android:padding="5dp"
             android:text="@string/recherche" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:layout_below="@id/linearSeekType"
         android:id="@+id/AllCarsList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/linearSeekType"
         app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 </RelativeLayout>

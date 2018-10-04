@@ -62,7 +62,6 @@ public class ParkingActivity extends AppCompatActivity implements ClickCarListen
     }
 
     public void redirNewCar(View view) {
-        Toast.makeText(this, "Nouvelle voiture", Toast.LENGTH_SHORT).show();
         Intent redirAddCar = new Intent(this, CarAddActivity.class);
         startActivity(redirAddCar);
     }

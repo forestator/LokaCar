@@ -64,4 +64,7 @@
     <string name="contenu_du_message">contenu du message</string>
     <string name="start_date">Début le :</string>
     <string name="end_date">Fin le :</string>
+    <string name="take_picture">Prendre Photos avant la location</string>
+    <string name="nb_loc_date">Jours de location :</string>
+    <string name="validate_loc">Valider la Location</string>
 </resources>

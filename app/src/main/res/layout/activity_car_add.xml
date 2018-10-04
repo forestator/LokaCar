@@ -34,9 +34,9 @@
 
     <LinearLayout
         android:id="@+id/llNCa_2"
-        android:layout_below="@+id/llNCa_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/llNCa_1"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:orientation="horizontal">
@@ -205,6 +205,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:padding="5dp"
+            android:background="@color/colorBtn"
             android:drawableTop="@drawable/lokacar_ic_cancel_24"
             android:onClick="emptyForm"
             android:text="@string/cancel" />
@@ -213,6 +215,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
+            android:padding="5dp"
+            android:background="@color/colorBtn"
             android:drawableTop="@drawable/lokacar_ic_add_24"
             android:onClick="createCar"
             android:text="@string/createCar" />

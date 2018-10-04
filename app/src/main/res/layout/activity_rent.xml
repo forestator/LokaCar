@@ -32,8 +32,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <EditText
@@ -47,46 +47,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.7"
+                    android:background="@color/colorBtn"
                     android:onClick="onClickSearchClient"
+                    android:padding="5dp"
                     android:text="@string/recherche" />
             </LinearLayout>
 
             <ListView
                 android:id="@+id/listViewClient"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                ></ListView>
+                android:layout_height="match_parent" />
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:background="@color/colorAccent"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:orientation="horizontal">
+                android:layout_weight="0.2"
+                android:text="@string/nom_du_client" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:text="@string/nom_du_client" />
+            <TextView
+                android:id="@+id/nomClient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8" />
 
-                <TextView
-                    android:id="@+id/nomClient"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.8" />
-
-            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -99,7 +93,9 @@
                 android:id="@+id/picDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/colorBtn"
                 android:onClick="datePicker"
+                android:padding="5dp"
                 android:text="@string/choisir_une_date" />
 
             <TextView
@@ -122,7 +118,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
-                android:text="Nbre jours location:"
+                android:text="@string/nb_loc_date"
                 android:textSize="18dp" />
 
             <EditText
@@ -132,10 +128,10 @@
                 android:layout_weight="0.5"
                 android:inputType="number"
                 android:padding="10dp"
-                android:text="0"
-                />
+                android:text="0" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,17 +142,22 @@
                 android:id="@+id/btnPhotos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:background="@color/colorBtn"
                 android:onClick="takePictureForRent"
-                android:text="Prendre Photos avant la location"
-                android:layout_weight="0.5"/>
+                android:padding="5dp"
+                android:text="@string/take_picture" />
 
             <Button
                 android:id="@+id/validBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.5"
+                android:background="@color/colorBtn"
                 android:onClick="confirmRent"
-                android:text="Valider la sélection"
-                android:layout_weight="0.5"/>
+                android:padding="5dp"
+                android:text="@string/validate_loc" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

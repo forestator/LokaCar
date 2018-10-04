@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp" />
 
 
         <LinearLayout
@@ -31,8 +31,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -51,8 +51,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -72,8 +72,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -93,8 +93,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -114,8 +114,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -218,22 +218,31 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="0.5"
+                    android:background="@color/colorBtn"
                     android:onClick="onClickPreviousPictures"
+                    android:padding="5dp"
                     android:text="Photo avant" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="0.5"
+                    android:background="@color/colorBtn"
                     android:onClick="onClickAfterPictures"
+                    android:padding="5dp"
                     android:text="Photo après" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="0.5"
+                    android:background="@color/colorBtn"
                     android:onClick="onClickConfirmReturn"
+                    android:padding="5dp"
                     android:text="Valider retour" />
 
             </LinearLayout>

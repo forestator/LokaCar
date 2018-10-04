@@ -59,7 +59,6 @@ public class ClientListActivity extends AppCompatActivity implements ClickClient
     }
 
     public void redirNewClient(View view) {
-        Toast.makeText(this, "Nouveau Client", Toast.LENGTH_SHORT).show();
         Intent newClientIntent = new Intent(this, ClientAddActivity.class);
         startActivity(newClientIntent);
     }

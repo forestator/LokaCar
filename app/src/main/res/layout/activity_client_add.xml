@@ -155,6 +155,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:drawableTop="@drawable/lokacar_ic_cancel_24"
+            android:padding="5dp"
+            android:background="@color/colorBtn"
             android:onClick="emptyForm"
             android:text="@string/cancel" />
 
@@ -163,6 +165,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:drawableTop="@drawable/lokacar_ic_add_24"
+            android:padding="5dp"
+            android:background="@color/colorBtn"
             android:onClick="createClient"
             android:text="@string/createClient" />
 

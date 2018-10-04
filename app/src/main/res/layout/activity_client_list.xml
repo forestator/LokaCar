@@ -10,26 +10,28 @@
         android:id="@+id/btnAddClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_margin="5dp"
-        android:text="@string/add_client"
-        android:onClick="redirNewClient"
+        android:background="@color/colorBtn"
         android:drawableStart="@drawable/lokacar_ic_add_client_24"
         android:drawablePadding="7dp"
-        android:layout_centerHorizontal="true"/>
+        android:onClick="redirNewClient"
+        android:padding="5dp"
+        android:text="@string/add_client" />
 
     <LinearLayout
         android:id="@+id/linearSekkforClient"
-        android:layout_below="@id/btnAddClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btnAddClient"
         android:orientation="vertical"
         android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <EditText
@@ -43,7 +45,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.7"
+                android:background="@color/colorBtn"
                 android:onClick="onClickSearchClient"
+                android:padding="5dp"
                 android:text="@string/recherche" />
         </LinearLayout>
     </LinearLayout>
@@ -53,6 +57,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/linearSekkforClient"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
 </RelativeLayout>
