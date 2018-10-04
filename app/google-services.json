@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "944566967997",
+    "firebase_url": "https://projetlokacar.firebaseio.com",
+    "project_id": "projetlokacar",
+    "storage_bucket": "projetlokacar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:944566967997:android:c11b68b286aa2512",
+        "android_client_info": {
+          "package_name": "fr.eni.mforet2018.projetlokacar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "944566967997-had0muqrbh6knn4d7n43ohkiteb8n743.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.eni.mforet2018.projetlokacar",
+            "certificate_hash": "c934c84ea8d6dfef55551066566d8d534f212282"
+          }
+        },
+        {
+          "client_id": "944566967997-4m2umav3cps34t8ratfceol5tjr7keuo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGJETuSrmSMsmfTs4_Yk5teEh9qnMq0cM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "944566967997-4m2umav3cps34t8ratfceol5tjr7keuo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

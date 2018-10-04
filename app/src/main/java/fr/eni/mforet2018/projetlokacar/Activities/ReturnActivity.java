@@ -48,7 +48,7 @@ public class ReturnActivity extends AppCompatActivity {
     private LocationFile currentLocationFile;
     private Client currentClient;
     private AppDatabase appDatabase;
-    Uri downloadUrl=null;
+    Uri downloadUrl = null;
     String localImageFilePath;
 
     @Override
@@ -56,8 +56,13 @@ public class ReturnActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_return);
         ImageView img = findViewById(R.id.CarFullPicture);
-        this.stockageCloud = FirebaseStorage.getInstance().getReference();/*
         this.stockageCloud = FirebaseStorage.getInstance().getReference();
+        appDatabase = Connexion.getConnexion(this);
+        if (this.getIntent().hasExtra("car")) {
+            currentCar = this.getIntent().getParcelableExtra("car");
+        } else if (this.getIntent().hasExtra("plateNb")) {
+            currentCar = appDatabase.carDAO().getCarFromPlate(this.getIntent().getStringExtra("plateNb"));
+        }
         if (currentCar.getPicture() != null) {
             StorageReference httpsReference = this.stockageCloud.getStorage().getReferenceFromUrl(currentCar.getPicture().toString());
             try {
@@ -82,17 +87,9 @@ public class ReturnActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {*/
+        } else {
             img.setImageResource(R.drawable.lokacar_ic_car_90);
-       // }
-        appDatabase = Connexion.getConnexion(this);
-
-        if (this.getIntent().hasExtra("car")) {
-            currentCar = this.getIntent().getParcelableExtra("car");
-        } else if (this.getIntent().hasExtra("plateNb")) {
-            currentCar = appDatabase.carDAO().getCarFromPlate(this.getIntent().getStringExtra("plateNb"));
         }
-
         currentLocationFile = appDatabase.locationFileDAO().getLocationFileByCarPlateNumber(currentCar.getPlateNumber());
         currentClient = appDatabase.clientDAO().searchClientById(currentLocationFile.getClientId());
         Log.i("Return_CAR", currentCar.toString());
@@ -134,7 +131,7 @@ public class ReturnActivity extends AppCompatActivity {
     }
 
     public void onClickPreviousPictures(View view) {
-        if (currentLocationFile.getPicturesBeforeRent() != null){
+        if (currentLocationFile.getPicturesBeforeRent() != null) {
             ImageView i = findViewById(R.id.ivBeforePicture);
             StorageReference httpsReference = this.stockageCloud.getStorage().getReferenceFromUrl(currentLocationFile.getPicturesBeforeRent().toString());
             try {
@@ -164,7 +161,8 @@ public class ReturnActivity extends AppCompatActivity {
         }
     }
 
-    public void onClickAfterPictures(View view) {  Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+    public void onClickAfterPictures(View view) {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photo = createImageFile();
             Uri uriToUpload = FileProvider.getUriForFile(this,
@@ -177,8 +175,7 @@ public class ReturnActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode)
-        {
+        switch (requestCode) {
             case REQUEST_IMAGE_CAPTURE:
                 Bitmap imageBitmap = BitmapFactory.decodeFile(this.localImageFilePath);
                 ImageView iv = findViewById(R.id.ivAfterPicture);
@@ -186,7 +183,7 @@ public class ReturnActivity extends AppCompatActivity {
                 uploadImage();
                 break;
             default:
-                super.onActivityResult(requestCode,resultCode,data);
+                super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
@@ -209,7 +206,7 @@ public class ReturnActivity extends AppCompatActivity {
                 });
     }
 
-    private File createImageFile()  {
+    private File createImageFile() {
         String timeStamp =
                 new SimpleDateFormat("yyyyMMdd_HHmmss",
                         Locale.getDefault()).format(new Date());
