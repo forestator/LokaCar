@@ -208,6 +208,7 @@ public class RentActivity extends AppCompatActivity {
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }
+                break;
             case 10128:
                 Toast.makeText(this, "CAMERA", Toast.LENGTH_SHORT).show();
                 break;
