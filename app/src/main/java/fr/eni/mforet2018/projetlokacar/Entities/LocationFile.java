@@ -1,6 +1,7 @@
 package fr.eni.mforet2018.projetlokacar.Entities;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
@@ -14,17 +15,17 @@ import java.util.Date;
 
 import fr.eni.mforet2018.projetlokacar.Entities.Converters.Converters;
 
+import static android.arch.persistence.room.ForeignKey.CASCADE;
+
 @Entity(indices = {@Index(value = {"carPlateNumber", "clientId", "id"}, unique = true)}/*,
         // TODO: gérer les foreignKeys
         foreignKeys = {
                 @ForeignKey(entity = Client.class,
                         parentColumns = "clientId",
-                        childColumns = "clientId",
-                        onDelete = CASCADE),
+                        childColumns = "clientId"),
                 @ForeignKey(entity = Car.class,
                         parentColumns = "plateNumber",
-                        childColumns = "carPlateNumber",
-                        onDelete = CASCADE)
+                        childColumns = "carPlateNumber")
         }*/)
 public class LocationFile implements Parcelable {
 

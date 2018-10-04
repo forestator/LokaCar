@@ -31,8 +31,14 @@ public class ReturnActivity extends AppCompatActivity {
         ImageView img = findViewById(R.id.CarFullPicture);
         img.setImageResource(R.drawable.lokacar_ic_car_90);
 
-        currentCar = this.getIntent().getParcelableExtra("car");
         appDatabase = Connexion.getConnexion(this);
+
+        if (this.getIntent().hasExtra("car")) {
+            currentCar = this.getIntent().getParcelableExtra("car");
+        } else if (this.getIntent().hasExtra("plateNb")) {
+            currentCar = appDatabase.carDAO().getCarFromPlate(this.getIntent().getStringExtra("plateNb"));
+        }
+
         currentLocationFile = appDatabase.locationFileDAO().getLocationFileByCarPlateNumber(currentCar.getPlateNumber());
         currentClient = appDatabase.clientDAO().searchClientById(currentLocationFile.getClientId());
         Log.i("Return_CAR", currentCar.toString());

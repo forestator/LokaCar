@@ -17,8 +17,7 @@ public class LoginActivity extends AppCompatActivity implements OnFinishedDBList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //TODO:Remove for prod
-        new Mock(this,this).execute();
+
     }
 
     public void onLoginClick(View view) {

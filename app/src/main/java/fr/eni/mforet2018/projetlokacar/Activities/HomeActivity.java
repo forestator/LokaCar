@@ -23,37 +23,31 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void redirRentCar(View view) {
-        Toast.makeText(this, "Rent car", Toast.LENGTH_SHORT).show();
         Intent rentCarIntent = new Intent(this, RentCarListActivity.class);
         startActivity(rentCarIntent);
     }
 
     public void redirReturnCar(View view) {
-        Toast.makeText(this, "Return", Toast.LENGTH_SHORT).show();
         Intent returnCarIntent = new Intent(this, ReturnCarListActivity.class);
         startActivity(returnCarIntent);
     }
 
     public void redirClientMgmt(View view) {
-        Toast.makeText(this, "Client Management", Toast.LENGTH_SHORT).show();
         Intent clientListIntent = new Intent(this, ClientListActivity.class);
         startActivity(clientListIntent);
     }
 
     public void redirAgencyMgmt(View view) {
-        Toast.makeText(this, "Agency Management", Toast.LENGTH_SHORT).show();
         Intent agencyMgmtIntent = new Intent(this, AgencyManagementActivity.class);
         startActivity(agencyMgmtIntent);
     }
 
     public void redirAllParking(View view) {
-        Toast.makeText(this, "Show Parking", Toast.LENGTH_SHORT).show();
         Intent showParkingIntent = new Intent(this, ParkingActivity.class);
         startActivity(showParkingIntent);
     }
 
     public void redirSearch(View view) {
-        Toast.makeText(this, "search client or car", Toast.LENGTH_SHORT).show();
         Intent searchIntent = new Intent(this, LocationFileListActivity.class);
         startActivity(searchIntent);
     }
